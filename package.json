@@ -2,5 +2,5 @@
   "name": "sexygeohatters",
   "description": "Project package for sexygeohatters",
   "author": "team9",
-  "engine": "node 6.10.2"
+  "engines": "node 6.10.2"
 }
