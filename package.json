@@ -1,6 +1,14 @@
 {
   "name": "sexygeohatters",
+  "main": "starter.js",
   "description": "Project package for sexygeohatters",
   "author": "team9",
-  "engines": "node 6.10.2"
+  "engines": "node 6.10.2",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
 }
