@@ -1,3 +1,0 @@
-# SexyGeoHatters
-
-sss
