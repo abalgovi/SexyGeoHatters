@@ -6,27 +6,30 @@
   </head>
   <body>
 
-    <h1><%= title %></h1>
-
-    <h2>SignUp</h2>
+    <h1>Welcome to <%= title %>!</h1>
     <p id='error'>
       <% for(var i = 0; i<error.length;i++) { %>
 	      <p><%= error[i] %></p>
       <% } %>
     </p>
+
+<div class="login-page">
+  <div class="form">
+    <h2>Sign Up</h2>
     <form name='signUpForm' action='/users/signUp' method='post'>
-      <input placeholder='username' name='username' id='new_user'>
-      <input placeholder='password' name='password' type='password' id='new_pass'>
-      <input type='submit' value='SignUp'>
+      <input placeholder='Username' name='username' id='new_user'>
+      <input placeholder='Password' name='password' type='password' id='new_pass'>
+      <input type='submit' value='Sign Up'>
     </form>
 
    <h2>Login</h2>
    <form name='loginForm' action='/users/login' method='post'>
-      <input placeholder='username' id='username' name='username'>
-      <input placeholder='password' type='password' name='password' id='password'>
+      <input placeholder='Username' id='username' name='username'>
+      <input placeholder='Password' type='password' name='password' id='password'>
       <input type='submit' value='Login'>
    </form>
-
+  </div>
+</div>
   
   </body>
 </html>
