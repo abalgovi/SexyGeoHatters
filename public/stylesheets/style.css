@@ -7,7 +7,7 @@
 }
 .form {
   position: relative;
-  top: -80px;
+  top: -90px;
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
@@ -36,16 +36,20 @@ body {
   background: linear-gradient(to left, #76b852, #8DC26F);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;   
+  text-align: center;   
 }
 
 input[type="submit"]{
     background-color:green;
     border:none;
     color:white;
-    font-size: 13px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 7px;
+    margin: 3px 0px 20px 0px;
+    text-align: center;
+
 }
 
 a {
