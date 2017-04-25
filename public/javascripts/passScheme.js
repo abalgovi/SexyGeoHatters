@@ -57,28 +57,37 @@ function testPasswordScheme(val_lower, val_upper, val_num, val_len, val_special)
   
   var regexFormat = '/', regexStr = '', endRegex = '[';
 
+  // Similar to addLength(Len) 
+  function lengthSpecifier(length){
+    return '{'+ length + ',30}';
+  }
+
   regexStr += regexFormat;
 
-  if val_lower == 'Yes'
+  if (val_lower == 'Yes'){
     regexStr += genLowerCaseRegex();
     endRegex += 'a-z';
+  }
 
-  if val_upper == 'Yes'
+  if (val_upper == 'Yes'){
     regexStr += genUpCaseRegex();
     endRegex += 'A-Z';
+  }
 
-  if val_num == 'Yes'
+  if (val_num == 'Yes'){
     regexStr += genNumsRegex();
     endRegex += '0-9';
+  }
 
-  if val_special == 'Yes'
+  if (val_special == 'Yes'){
     regexStr += genSpecialCharsRegex();
     endRegex += '!@#$%^&*_?';
+  }
 
   endRegex += ']'
 
   regexStr += endRegex;
-  regexStr += addLength(val_len);
+  regexStr += lengthSpecifier(val_len);
   regexStr += regexFormat;
 
   return regexStr;
