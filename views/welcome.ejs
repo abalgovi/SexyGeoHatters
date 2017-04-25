@@ -8,12 +8,12 @@
 
     <h1><%= title %></h1>
     <% if(username == 'admin') {%>
-        <form action='/users/setPass' method='get'> 
+        <form action='/users/admin/setPass' method='get'> 
           <input type='submit' id='changepass' name='setPassScheme' value='setPassScheme'>
         </form>
     <%}%>
 
-     <form name='logoutForm' action='/users/logout' method='post'> 
+     <form name='logoutForm' action='/' method='post'> 
        <input type='submit' id='logout' value='logout'/>
      </form>
      
