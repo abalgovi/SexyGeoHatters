@@ -1,7 +1,7 @@
 var expect = chai.expect;
 
 // Test for checkPswd.js (Dir: ../public/javascripts/checkPswd.js)
-describe('checkPswd() Function Test', function () {
+describe('1. checkPswd() Function Test', function () {
 
     it('Test1 - Valid Password', function () {
     	expect(checkPswdS('Cse112ucsd@')).to.be.true;
