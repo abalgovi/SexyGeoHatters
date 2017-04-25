@@ -28,9 +28,6 @@ function setPasswordScheme() {
 
   // convert string to regex obj
   regex = new RegExp(regex);
-
-
- 
 }
 
 
@@ -53,4 +50,52 @@ function addLength(len) {
 function genSpecialCharsRegex() {
   return '(?=.*[!@#$%^&*_?])';
 }
+
+
+// -------- Testing Purposes Only --------
+function testPasswordScheme(val_lower, val_upper, val_num, val_len, val_special){
+  
+  var regexFormat = '/', regexStr = '', endRegex = '[';
+
+  regexStr += regexFormat;
+
+  if val_lower == 'Yes'
+    regexStr += genLowerCaseRegex();
+    endRegex += 'a-z';
+
+  if val_upper == 'Yes'
+    regexStr += genUpCaseRegex();
+    endRegex += 'A-Z';
+
+  if val_num == 'Yes'
+    regexStr += genNumsRegex();
+    endRegex += '0-9';
+
+  if val_special == 'Yes'
+    regexStr += genSpecialCharsRegex();
+    endRegex += '!@#$%^&*_?';
+
+  endRegex += ']'
+
+  regexStr += endRegex;
+  regexStr += addLength(val_len);
+  regexStr += regexFormat;
+
+  return regexStr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

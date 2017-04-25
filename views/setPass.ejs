@@ -2,42 +2,41 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='../public/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
   <body>
 
     <h1><%= title %></h1>
 
-    <div class="login-page">
-    <div class="form2">
     <form name='regexOptions' action='/users/changePass' method='post'> 
+
       <label>Numbers</label>
       <select name='numbers'>
         <option value='yes'>Yes</option>
         <option value='no'>No</option>
       </select><br>
 
-      <label>Lowercase</label>
+      <label>lowercase</label>
       <select name='lowercase'>
         <option value='yes'>Yes</option>
         <option value='no'>No</option>
       </select><br>
 
-      <label>Uppercase</label>
+      <label>uppercase</label>
       <select name='uppercase'>
         <option value='yes'>Yes</option>
 	<option value='no'>No</option>
       </select><br>
 
-      <label>Special Characters</label><br>
+      <label>SpecialCharacters</label>
       <input name='spChars' type="checkbox" value="!">!
-      <input name='spChars' type="checkbox" value="@">@
-      <input name='spChars' type="checkbox" value="#"># <br>
-      <input name='spChars' type="checkbox" value="$">$
+      <input name='spChars' type="checkbox" value="@">@<br>
+      <input name='spChars' type="checkbox" value="#">#
+      <input name='spChars' type="checkbox" value="$">$<br>
       <input name='spChars' type="checkbox" value="%">%
       <input name='spChars' type="checkbox" value="^">^<br>
       <input name='spChars' type="checkbox" value="*">*
-      <input name='spChars' type="checkbox" value="?">?
+      <input name='spChars' type="checkbox" value="?">?<br>
       <input name='spChars' type="checkbox" value="_">_<br>
 
       <label>Length</label>
@@ -51,10 +50,11 @@
         <option value='12'>12</option>
 	<option value='13'>13</option>
       </select>
+      
       <input type='Submit' value='Change Regex'>
+
     </form>
-  </div>
-</div>
+  
   </body>
 </html>
 
