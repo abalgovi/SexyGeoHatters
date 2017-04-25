@@ -1,0 +1,24 @@
+{
+  "name": "sexygeohatters",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "6.10.2"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "chai": "*",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "mocha": "*",
+    "mongoose": "^4.9.5",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  }
+}
