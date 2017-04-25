@@ -7,12 +7,26 @@
   <body>
 
     <h1><%= title %></h1>
-    <p><b>Type in password<b></p><br>
-     
-    <p id='passFailed'></p>
-    <input id='userinput' type='password'></input>
-    <button onclick='checkPswd()'>Submit</button>
-    <script type='text/javascript' src='/javascripts/checkPswd.js'></script>
+
+    <h2>SignUp</h2>
+    <p id='error'>
+      <% for(var i = 0; i<error.length;i++) { %>
+	      <p><%= error[i] %></p>
+      <% } %>
+    </p>
+    <form name='signUpForm' action='/users/signUp' method='post'>
+      <input placeholder='username' name='username' id='new_user'>
+      <input placeholder='password' name='password' type='password' id='new_pass'>
+      <input type='submit' value='SignUp'>
+    </form>
+
+   <h2>Login</h2>
+   <form name='loginForm' action='/users/login' method='post'>
+      <input placeholder='username' id='username' name='username'>
+      <input placeholder='password' type='password' name='password' id='password'>
+      <input type='submit' value='Login'>
+   </form>
+
   
   </body>
 </html>
