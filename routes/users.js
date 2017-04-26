@@ -74,8 +74,7 @@ router.get('/', function(req, res, next) { res.send('respond with a resource'); 
 router.post('/signUp', function(req, res, next) {
   
   if(!req.body['username'] || !req.body['password']) {
-    //res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
-    res.redirect('index.ejs');
+    res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
   } else {
     checker.checkPswd(req,res);
   }   
