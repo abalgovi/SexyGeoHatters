@@ -28,12 +28,6 @@ function setPasswordScheme() {
 
   // convert string to regex obj
   regex = new RegExp(regex);
-<<<<<<< HEAD
-=======
-
-
- 
->>>>>>> dev
 }
 
 
@@ -56,8 +50,6 @@ function addLength(len) {
 function genSpecialCharsRegex() {
   return '(?=.*[!@#$%^&*_?])';
 }
-
-<<<<<<< HEAD
 
 // -------- Testing Purposes Only --------
 function testPasswordScheme(val_lower, val_upper, val_num, val_len, val_special){
@@ -99,21 +91,3 @@ function testPasswordScheme(val_lower, val_upper, val_num, val_len, val_special)
 
   return regexStr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> dev
