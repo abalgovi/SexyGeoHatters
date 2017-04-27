@@ -10,7 +10,14 @@
 
     <div class="login-page">
     <div class="form2">
-    <form name='regexOptions' action='/users/changePass' method='post'> 
+    <p id='currRegex'><h2>Current parameters</h2>
+      <% for(var i = 0; i<currRegex.length;i++) { %>
+	      <p><%= currRegex[i] %></p>
+      <% } %>
+    </p>
+
+    <h2>Set new password regex parameters</h2>
+    <form name='regexOptions' action='/users/changePass' method='post'>
       <label>Numbers</label>
       <select name='numbers'>
         <option value='yes'>Yes</option>
