@@ -128,7 +128,7 @@ router.post('/changePass', function(req,res,next) {
 
 
 router.get('/admin/setPass', function(req,res,next) {
-  res.render('setPass.ejs',{title: 'Set a new password scheme.'});
+  res.render('setPass.ejs',{title: 'Set a new password scheme.',});
 });
 
 
@@ -139,15 +139,16 @@ function setPasswordScheme(regexParams) {
 
   // end regex contains the [a-zA-Z0-9!@#$%^&*?] options at end of regex
   var strRegex = '', endRegex = '[';
+  console.log(regexParams);
   
   // loop through regexComponents and assemble the regex one at a time
   for(let component in regexComponents) {
-    
+     
     // length is the last part of regex so append end regex
     if(component == 'length') {
       strRegex += endRegex + ']' + '{' + regexParams['length'] + ',20}';
       regexComponents['length'] = regexParams['length'];
-    } else if(component ==  'specialChars') {
+    } else if(component ==  'specialChars' && regexParams[component] && regexParams[component].length > 0) {
       var spChars = regexParams['spChars'].reduce(function(acc,val) {return acc += val;})
       strRegex += '(?=.*[' + spChars + '])';
       endRegex += spChars;
@@ -202,7 +203,8 @@ function checkPswd(req,res) {
       
       var passAttrs = [];
       for(var attr in passTypes) {
-        if((attr == 'specialChars' && passTypes[attr].length == 0) || !passTypes[attr]) continue;
+        console.log(attr + ' ' + saved_regex[attr]);
+        if((attr == 'specialChars' && !saved_regex[attr]) || !passTypes[attr]) continue;
 	if(attr =='specialChars') passAttrs.push('Password must have at least one ' + passTypes[attr]);
 	else passAttrs.push('Password must have at least one ' + attr);
       }
