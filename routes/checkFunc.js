@@ -5,7 +5,7 @@ var db_models = require('../models/db_init');
 var exports = module.exports = {};
 
 
-// fetches regex from db and then does the comparison
+// fetches regex from db and compares. Called when a user signs up for site
 function checkPswd(req,res) {
   
   var validatePassword = function(err,currRegex) { 
@@ -74,6 +74,7 @@ function checkLogin(req,res) {
 
   var verifyLogin = function(err,savedUser) {
     if(!err && savedUser && req.body['password'] == savedUser['password']) {
+      req.session.user = savedUser.username;
       res.redirect('/users/' + req.body['username']);
     } else {
       res.render('index.ejs', {title: 'SexyGeoHatters',error: ['Incorrect Username or Password']});

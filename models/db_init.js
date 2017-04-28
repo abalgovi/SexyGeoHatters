@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var exports = module.exports = {};
 
+var TTL_COLLECTIONS = 4;
 var MONGO_URL = 'mongodb://randomgeohatter:sexygeohatters@ds115071.mlab.com:15071/sexygeohatters';
 var PASS_REGEX = '';
 var USER_SCHEMA = new mongoose.Schema({ username: String, password: String });
@@ -20,7 +21,7 @@ connection.once('open', function() {
   
  mongoose.connection.db.listCollections().toArray(function(err,names) {
 	if(err) console.log(err);
-	else if(names.length != 3) {
+	else if(names.length != TTL_COLLECTIONS) {
 	  for(let collection in collections) collections[collection]();
 	}
  });
@@ -32,6 +33,7 @@ connection.once('open', function() {
 
 	 		new_usr.save(function (err) {
  	   		  if(err) return handleError(err);
+			  console.log("CREATED USR COLLECTION!!")
 	 		})},
 
 	   regexes: function() {
@@ -44,7 +46,7 @@ connection.once('open', function() {
 
          		regex.save(function (err) {
  	   		  if(err) return handleError(err);
-	   		  console.log("SAVED REGEX TO DB!!");
+	   		  console.log("CREATED REGEX COLLECTION!!");
 	 		})}
 	 }
 });
@@ -104,6 +106,7 @@ function findUser(username,loginFunc) {
   });
 }
 
+exports.connection = connection;
 exports.saveUser = insertNewUser;
 exports.findUser = findUser;
 exports.updateRegex = updateRegex;

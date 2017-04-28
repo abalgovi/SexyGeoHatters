@@ -10,6 +10,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) { res.send('respond with a resource'); });
 
 
+
 router.post('/signUp', function(req, res, next) {
     
   if(!req.body['username'] || !req.body['password']) {
@@ -32,8 +33,14 @@ router.post('/login', function(req, res, next) {
 });
 
 
-router.get('/:username', function(req,res,next) {
-  res.render('welcome.ejs',{title: 'Welcome ' + req.params.username, username: req.params.username});
+router.post('/:username/logout', function(req,res,next) {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
+router.get('/:username', requireLogin, function(req,res,next) {
+  res.render('welcome.ejs',{title: 'Welcome ' + req.session.user, username: req.session.user});
 });
 
 
@@ -43,7 +50,7 @@ router.post('/changePass', function(req,res,next) {
 });
 
 
-router.get('/admin/setPass', function(req,res,next) {
+router.get('/admin/setPass', requireLogin, function(req,res,next) {
   
   var renderSetPass = function(err,savedRegex) {    
     if(err) return;
@@ -54,6 +61,12 @@ router.get('/admin/setPass', function(req,res,next) {
   db_models.findRegex(renderSetPass);
 
 });
+
+
+function requireLogin(req,res,next) {
+  console.log(req.session.user);
+  (!req.session.user) ? res.redirect('/') : next();
+}
 
 
 module.exports = router;
