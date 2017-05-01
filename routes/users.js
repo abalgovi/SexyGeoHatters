@@ -15,7 +15,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) { res.send('respond with a resource'); });
 
 
-/** @description - Router that handles all POST requests with the /users/signUp prefix.
+/** Router that handles all POST requests with the /users/signUp prefix.
  *  Is called each time a new user signs up for access to the website.
  *  @param req - The POST request made to this router
  *  @param res - The object used to customize a response to the POST request
@@ -33,7 +33,7 @@ router.post('/signUp', function(req, res, next) {
 });
 
 
-/** @description - Router that handles all POST requests with the /users/login prefix.
+/** Router that handles all POST requests with the /users/login prefix.
  *  Is called each time a user logs in for access to the website.
  *  @param req - The POST request made to this router
  *  @param res - The object used to customize a response to the POST request
@@ -112,7 +112,8 @@ router.get('/admin/setPass', requireLogin, function(req,res,next) {
 });
 
 
-/** Internal function used to ensure the user is logged in. If user is not
+/** @function requireLogin
+ *  @decription Internal function used to ensure the user is logged in. If user is not
  *  logged in, the page is redirect to index.ejx.
  *  @param req - The request that contains session data if issued by a valid user
  *  @param res - The object used to customize a response to the request
