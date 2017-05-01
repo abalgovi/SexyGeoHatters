@@ -33,8 +33,9 @@ connection.once('open', function() {
 
 	 		new_usr.save(function (err) {
  	   		  if(err) return handleError(err);
-			  console.log("CREATED USR COLLECTION!!")
-	 		})},
+			  console.log("CREATED USR COLLECTION!!");
+	 		});
+	   },
 
 	   regexes: function() {
       
@@ -47,8 +48,9 @@ connection.once('open', function() {
          		regex.save(function (err) {
  	   		  if(err) return handleError(err);
 	   		  console.log("CREATED REGEX COLLECTION!!");
-	 		})}
-	 }
+	 		});
+		   }
+	 };
 });
 
 
@@ -88,7 +90,7 @@ function updateRegex(regexComponents) {
   REGEX_MODEL.findOne(null,function(err,strReg) {
     if(err) console.log(err);
     else {
-      REGEX_MODEL.findOneAndUpdate({regex: strReg['regex']},regexComponents,{new: true}, function(err,thing) {
+      REGEX_MODEL.findOneAndUpdate({regex: strReg.regex},regexComponents,{new: true}, function(err,thing) {
            if(err) console.log(err);
       });
     }
