@@ -1,209 +1,130 @@
+/** @module users.js 
+ *  @description Handles all requests prefixed by /users/. Mostly used for user validation
+ *  and ensuring the user is properlly logged in for access to certain pages
+ */
+
 var express = require('express');
 var mongoose = require('mongoose');
+var checker = require('./checkFunc');
+var db_models = require('../models/db_init');
+
 
 var router = express.Router();
-
-var MONGO_URL = 'mongodb://randomgeohatter:sexygeohatters@ds115071.mlab.com:15071/sexygeohatters';
-var PASS_REGEX = '';
-var USER_SCHEMA = new mongoose.Schema({ username: String, password: String });
-var REGEX_SCHEMA = new mongoose.Schema({ regex: String, numbers: Boolean,
-					                         lowercase: Boolean, uppercase: Boolean,
-								 specialChars: String, length: Number});
-
-
-var connection = connectToDb();
-connection.once('open', function() {
-  
- mongoose.connection.db.listCollections().toArray(function(err,names) {
-	if(err) console.log(err);
-	else if(names.length != 3) {
-	  for(let collection in collections) collections[collection]();
-	}
- });
-        
-         var collections = {
-	   users: function() {
-			    
-	 		var usr_model = mongoose.model('users',USER_SCHEMA);
-	 		var new_usr = new usr_model({username: 'admin', password: 'sexygeohatters'});
-
-	 		new_usr.save(function (err) {
- 	   		  if(err) return handleError(err);
-	 		})},
-
-	   regexes: function() {
-      
-          		var regex_model = mongoose.model('regexes',REGEX_SCHEMA);
-	 		var regex = new regex_model({
-                           regex:'(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!?*@#$%&_])[A-Za-z0-9!@#$%&*?_]{8,20}', 
-			   numbers: true, lowercase: true, uppercase: true, specialChars: '!?*@#$%&_',
-			   length: 8
-			});
-
-         		regex.save(function (err) {
- 	   		  if(err) return handleError(err);
-	   		  console.log("SAVED REGEX TO DB!!");
-	 		})}
-	 }
-});
-
-
-
-
-// called when a user signs up for website
-function insertUser(userObj) {
-  if(!mongoose.connection.readyState) {
-    connection = connectToDb();
-    connection.once('open', function() { connection.collection('users').insert(userObj); });
-  } else {
-    connection.collection('users').insert(userObj);
-  }
-}
-
-
-
-function connectToDb() {
-  mongoose.connect(MONGO_URL, {server: {reconnectTries: Number.Max_Value, reconnectInterval:
-		  3000}});
-  var connection = mongoose.connection;
-  connection.on('error', console.error.bind(console,'connection error:'));
-  return connection;
-}
-
 
 /* GET users listing. */
 router.get('/', function(req, res, next) { res.send('respond with a resource'); });
 
-// handles all post requests to /users for signup
+
+/** Router that handles all POST requests with the /users/signUp prefix.
+ *  Is called each time a new user signs up for access to the website.
+ *  @param req - The POST request made to this router
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
 router.post('/signUp', function(req, res, next) {
-  if(!req.body['username'] || !req.body['password']) {
-     console.log('Error ' + req.body['password']);
-     res.render('index.ejs', {error: 'Provide both username and pass', title: 'SexyGeoHatters'});
-   } else {
-     
-     checkPswd(req.body['password'], function(boolGoodPass,passTypes) {
-       
-       if(boolGoodPass) {
-         console.log('successfully logged user ' + req.body['username']);
-         res.render('welcome.ejs',{title: 'Welcome ' + req.body['username'], username:
-			 req.body['username']});
-         insertUser({username:(req.body['username']), password: req.body['password']});
-       } else {
-         
-         var password_attrs = ['Provide username'];
-	 for(let req in passTypes) {
-	   switch(req) {
-	     case 'specialChars': 
-	       password_attrs.push('Password must have at least one of ' + passTypes[req]);
-	       break;
-	     case 'length':
-	       password_attrs.push('Length must be ' + passTypes[req] + '-20 chars long');
-	       break;
-	     default: password_attrs.push('Password must have at least one ' + req);
-	   }
-	 }
-	 res.render('index.ejs', {error: password_attrs, title: 'SexyGeoHatters'});
-       }
-     });}
-
-});
-
-
-router.post('/login', function(req, res, next) {
- 
-  if(!req.body['username'] || !req.body['password']) {
-    res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']})
-    return;
-  }
-
-  var usr = req.body['username'], pass = req.body['password'];
-  mongoose.model('users',USER_SCHEMA).find({username: usr}, function(err,savedUser) {
-	if(!err && savedUser.length > 0 && pass == savedUser[0]['password']) {
-	  res.render('welcome.ejs', {title: 'Welcome ' + usr, username: usr});
-	} else {
-	  res.render('index.ejs', {title: 'SexyGeoHatters',error: ['Incorrect Username or Password']});
-	}
-  });   
-});
-
-
-router.post('/changePass', function(req,res,next) {
-  console.log(req['body']);
-  setPasswordScheme(req['body']);
-  res.render('/users');
-});
-
-router.get('/setPass', function(req,res,next) {
-  res.render('setPass.ejs',{title: 'Set a new password scheme.'});
-});
-
-
-function setPasswordScheme(regexParams) {
- 
-  var regexComponents = {regex: null,numbers: '(?=.*[0-9])',lowercase: '(?=.*[a-z])',
-	                 uppercase: '(?=.*[A-Z])', specialChars: null, length: null };
-
-  // end regex contains the [a-zA-Z0-9!@#$%^&*?] options at end of regex
-  var strRegex = '', endRegex = '[';
-  
-  // loop through regexComponents and assemble the regex one at a time
-  for(let component in regexComponents) {
     
-    // length is the last part of regex so append end regex
-    if(component == 'length') {
-      strRegex += endRegex + ']' + '{' + regexParams['length'] + ',20}';
-      regexComponents['length'] = regexParams['length'];
-    } else if(component ==  'specialChars') {
-      var spChars = regexParams['spChars'].reduce(function(acc,val) {return acc += val;})
-      strRegex += '(?=.*[' + spChars + '])';
-      endRegex += spChars;
-      regexComponents['specialChars'] = spChars;
-    } else if(regexParams[component] == 'yes') {
-      endRegex += regexComponents[component].slice(6,9);
-      strRegex += regexComponents[component];
-      regexComponents[component] = true;
-    } else {
-      regexComponents[component] = false;
-    }
-  }
-
-  // persist in mongo
-  regexComponents['regex'] = strRegex;
-  var rgx_model = mongoose.model('regexes',REGEX_SCHEMA);
+  if(!req.body.username || !req.body.password) {
+    res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
+  } else {
+    checker.checkPswd(req,res);
+  }   
   
-  rgx_model.findOne(null,function(err,strReg) {
-     if(err) console.log(err);
-     else {
-       console.log(PASS_REGEX + ' ' + strReg['regex']);
-       rgx_model.findOneAndUpdate({regex: strReg['regex']},regexComponents,{new: true}, function(err,thing) {
-		       if(err) console.log(err);
-		       else console.log(thing)});
-       PASS_REGEX = new RegExp(strRegex);
-       console.log(PASS_REGEX);
-    }
-  }); 
+});
+
+
+/** Router that handles all POST requests with the /users/login prefix.
+ *  Is called each time a user logs in for access to the website.
+ *  @param req - The POST request made to this router
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.post('/login', function(req, res, next) {
+  
+  if(!req.body.username || !req.body.password) {
+    res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
+  } else {
+    checker.checkLogin(req,res);
+  }   
+
+});
+
+
+/** Router that handles all POST requests with the /users/username/logout prefix.
+ *  Is called each time a user logs out from the website and destroys the users
+ *  session.
+ *  @param req The POST request made to this router
+ *  @param res The object used to customize a response to the POST request
+ *  @param next Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.post('/:username/logout', function(req,res,next) {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
+/** Router that handles all GET requests with the /users/username prefix. Is called 
+ *  each time a user successfully logs into the website
+ *  @param req - The POST request made to this router
+ *  @param requireLogin - Ensures the user is logged in before accessing this page.
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.get('/:username', requireLogin, function(req,res,next) {
+  res.render('welcome.ejs',{title: 'Welcome ' + req.session.user, username: req.session.user});
+});
+
+
+/** Router that handles all POST requests with the /users/changePass prefix. Is called 
+ *  each time the admin clicks submit setPass.ejs
+ *  @param req - The POST request made to this router
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.post('/changePass', function(req,res,next) {
+  checker.setPasswordScheme(req.body);
+  res.redirect('/users/admin');
+});
+
+
+/** Router that handles all GET requests with the /users/admin/setPass prefix.
+ *  Is called each time the administrator visits setPass.ejs
+ *  @param req - The POST request made to this router
+ *  @param requireLogin - Ensures the user is logged in before accessing this page.
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.get('/admin/setPass', requireLogin, function(req,res,next) {
+  
+  var renderSetPass = function(err,savedRegex) {    
+    if(err) return;
+    res.render('setPass.ejs',{title: 'Set a new password scheme.',currRegex:
+		    checker.getRegexAttrs(savedRegex)});  
+  };
+  
+  db_models.findRegex(renderSetPass);
+
+});
+
+
+/** @function requireLogin
+ *  @decription Internal function used to ensure the user is logged in. If user is not
+ *  logged in, the page is redirect to index.ejx.
+ *  @param req - The request that contains session data if issued by a valid user
+ *  @param res - The object used to customize a response to the request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+function requireLogin(req,res,next) {
+  console.log(req.session.user);
+  if(!req.session.user) res.redirect('/');
+  else next();
 }
 
-
-// fetches regex from db and then does the comparison
-function checkPswd(userInput, funcSendRes) {
-  
-  var passTypes = {number: null, lowercase: null, uppercase: null,
-                   specialChars: null, length: null};
-
-  var rgx_model = mongoose.model('regexes', REGEX_SCHEMA);
-  var query = rgx_model.findOne();
-   
-  query.exec(function(err, saved_regex) {
-    if(err) {
-      console.log('Error while fetching regex to match');
-    } else {
-      PASS_REGEX = new RegExp(saved_regex['regex']);
-      for(let type in passTypes) passTypes[type] = saved_regex[type];
-      funcSendRes(PASS_REGEX.test(userInput),passTypes);
-    }
-  });
-
-}
 
 module.exports = router;
