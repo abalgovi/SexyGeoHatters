@@ -12,3 +12,6 @@ Eg. `git clone -b dev https://github.com/lawchihon/SexyGeoHatters.git`, if you w
 2. Run `npm install` inside the project folder  
 3. Run `npm start` to host the server  
 4. Go to the browser and type in `localhost:3000`
+
+### To RUN the test on this project
+1. Run `npm test` inside the project folder  
