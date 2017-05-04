@@ -15,4 +15,3 @@ Eg. `git clone -b dev https://github.com/lawchihon/SexyGeoHatters.git`, if you w
 
 ### To RUN the test on this project
 1. Run `npm test` inside the project folder  
-
