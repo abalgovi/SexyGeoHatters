@@ -11,4 +11,11 @@ Eg. `git clone -b dev https://github.com/lawchihon/SexyGeoHatters.git`, if you w
 1. Git clone the project  
 2. Run `npm install` inside the project folder  
 3. Run `npm start` to host the server  
+<<<<<<< HEAD
 4. Go to the browser and type in `localhost:3000`
+=======
+4. Go to the browser and type in `localhost:3000`
+
+### To RUN the test on this project
+1. Run `npm test` inside the project folder  
+>>>>>>> acc6222c46f9bdcd88390339b2ed39ac41d6c003

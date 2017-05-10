@@ -3,7 +3,8 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jsdoc = require('gulp-jsdoc3');
-
+var mocha = require('gulp-mocha');
+var util = require('gulp-util');
 
 
 gulp.task('docs', function (cb){
@@ -17,6 +18,11 @@ gulp.task('lint', function(){
 				  .pipe(jshint.reporter('default'));
 });
 
+gulp.task('test', function() {
+	return gulp.src(['test/*.js'], { read: false })
+        .pipe(mocha({ reporter: 'list' })) 
+        .on('error', util.log);
+});
 
 // run when you only type gulp into command line with no parameters
-gulp.task('default', ['lint','docs']);
+gulp.task('default', ['lint','docs','test']);

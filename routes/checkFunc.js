@@ -22,9 +22,9 @@ function checkPswd(req,res) {
     
     if(err) return;
     var passRegex = new RegExp(currRegex.regex);
-
     if(passRegex.test(req.body.password)) {
       db_models.saveUser({username: req.body.username, password: req.body.password});
+      req.session.user = req.body.username;
       res.redirect('/users/' + req.body.username);
     } else {
       res.render('index.ejs', {error: getRegexAttrs(currRegex), title: 'SexyGeoHatters'});

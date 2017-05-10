@@ -1,4 +1,4 @@
-var userObj = require('users.js');
+var userObj = require('../../routes/users.js');
 
 function setPasswordScheme() {
 

@@ -1,4 +1,7 @@
-var expect = chai.expect;
+var chai = require('chai');  // Required to test node.js locally
+var expect = chai.expect;    
+
+var foo = require('../public/javascripts/starter.js'); // Required to test node.js locally 
 
 // Test for checkPswd.js (Dir: ../public/javascripts/starter.js)
 describe('foo() Function Test', function () {
