@@ -3,7 +3,7 @@ var expect = chai.expect;
 
 var foo = require('../public/javascripts/starter.js'); // Required to test node.js locally 
 
-// Test for checkPswd.js (Dir: ../public/javascripts/starter.js)
+// Test checkPswd.js (Dir: ../public/javascripts/starter.js)
 describe('foo() Function Test', function () {
 
     it('Test1 - foo == baz', function () {
