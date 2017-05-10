@@ -133,9 +133,4 @@ exports.setPasswordScheme = setPasswordScheme;
 exports.checkPswd = checkPswd;
 exports.checkLogin = checkLogin;
 
-// Exports for testing
-module.exports = checkPswd;
-module.exports = setPasswordScheme;
-module.exports = checkLogin;
-module.exports = getRegexAttrs;
 
