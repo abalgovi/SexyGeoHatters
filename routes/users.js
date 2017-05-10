@@ -27,7 +27,8 @@ router.post('/signUp', function(req, res, next) {
   if(!req.body.username || !req.body.password) {
     res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
   } else {
-    checker.checkPswd(req,res);
+    //checker.checkPswd(req,res);
+    checkPswd(req,res);
   }   
   
 });
