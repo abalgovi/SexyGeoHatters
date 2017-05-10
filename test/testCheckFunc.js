@@ -31,7 +31,7 @@ describe('Backend Testing on: https://sexygeohatters.herokuapp.com', function ()
    // Sign up valid testing (Username: cse112ucsdTest, password: Helloworld11)
    it('Sign Up cse112ucsdTest - Valid Input', function (done) {
       server.post('/users/signup')
-      .send({username: 'cse112ucsdTest', password: 'Helloworld11'})
+      .send({username: 'cse112ucsdTest', password: 'Helloworld11#'})
       .expect(302)
       .end(function(err, res){
          expect(res.statusCode).to.equal(302);
@@ -61,7 +61,7 @@ describe('Backend Testing on: https://sexygeohatters.herokuapp.com', function ()
    // Sign in with the above created user account (Username: cse112ucsdTest, password: Helloworld11)
    it('Sign in cse112ucsdTest - User Exist (cse112ucsdTest)', function (done) {
       server.post('/users/login')
-      .send({username: 'cse112ucsdTest', password: 'Helloworld11'})
+      .send({username: 'cse112ucsdTest', password: 'Helloworld11#'})
       .expect(302)
       .end(function(err, res){
          expect(res.statusCode).to.equal(302);
