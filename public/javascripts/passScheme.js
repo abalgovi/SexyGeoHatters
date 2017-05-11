@@ -92,4 +92,3 @@ function testPasswordScheme(val_lower, val_upper, val_num, val_len, val_special)
 
   return regexStr;
 }
-

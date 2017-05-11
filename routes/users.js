@@ -27,7 +27,8 @@ router.post('/signUp', function(req, res, next) {
   if(!req.body.username || !req.body.password) {
     res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
   } else {
-    checker.checkPswd(req,res);
+    //checker.checkPswd(req,res);
+    checkPswd(req,res);
   }   
   
 });
@@ -132,6 +133,31 @@ function checkLogin(req,res) {
 
 router.get('/:username', function(req,res,next) {
   res.render('welcome.ejs',{title: 'Welcome ' + req.params.username, username: req.params.username});
+/** Router that handles all POST requests with the /users/username/logout prefix.
+ *  Is called each time a user logs out from the website and destroys the users
+ *  session.
+ *  @param req The POST request made to this router
+ *  @param res The object used to customize a response to the POST request
+ *  @param next Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.post('/:username/logout', function(req,res,next) {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
+/** Router that handles all GET requests with the /users/username prefix. Is called 
+ *  each time a user successfully logs into the website
+ *  @param req - The POST request made to this router
+ *  @param requireLogin - Ensures the user is logged in before accessing this page.
+ *  @param res - The object used to customize a response to the POST request
+ *  @param next - Implicitly runs the next part of execution.
+ *  @return - void
+ */
+router.get('/:username', requireLogin, function(req,res,next) {
+  res.render('welcome.ejs',{title: 'Welcome ' + req.session.user, username: req.session.user});
+
 });
 
 
@@ -148,6 +174,7 @@ router.post('/changePass', function(req,res,next) {
 });
 
 
+
   console.log(req['body']);
   setPasswordScheme(req['body']);
   res.redirect('/users/admin');
@@ -157,6 +184,7 @@ router.post('/changePass', function(req,res,next) {
 router.get('/admin/setPass', function(req,res,next) {
   res.render('setPass.ejs',{title: 'Set a new password scheme.'});
 });
+
 
 
 /** Router that handles all GET requests with the /users/admin/setPass prefix.
@@ -188,6 +216,9 @@ router.get('/admin/setPass', requireLogin, function(req,res,next) {
     }
   }); 
 }
+
+  db_models.findRegex(renderSetPass);
+
 
 });
 
