@@ -9,6 +9,21 @@ var db_models = require('../models/db_init');
 
 var exports = module.exports = {};
 
+function validatePassword(err,currRegex,req,res) { 
+    
+    if(err) return false;
+    var passRegex = new RegExp(currRegex.regex);
+    if(passRegex.test(req.body.password)) {
+      db_models.saveUser({username: req.body.username, password: req.body.password});
+      req.session.user = req.body.username;
+      res.redirect('/users/' + req.body.username);
+      return true;
+    }
+      
+    res.render('index.ejs', {error: getRegexAttrs(currRegex), title: 'SexyGeoHatters'});
+    return false;
+}
+
 /** @function checkPswd
  *  @description - Ensures the password a user types in the signUp form complies with the
  *  password requirements set by admin.
@@ -17,30 +32,14 @@ var exports = module.exports = {};
  *  @return - void
  */
 function checkPswd(req,res) {
-  
-  var validatePassword = function(err,currRegex) { 
-    
-    if(err) return;
-    var passRegex = new RegExp(currRegex.regex);
-    if(passRegex.test(req.body.password)) {
-      db_models.saveUser({username: req.body.username, password: req.body.password});
-      req.session.user = req.body.username;
-      res.redirect('/users/' + req.body.username);
-    } else {
-      res.render('index.ejs', {error: getRegexAttrs(currRegex), title: 'SexyGeoHatters'});
-    }
-  
-  };
-  
-  db_models.findRegex(validatePassword);
-
+  db_models.findRegex(validatePassword,req,res);
 }
 
 
 /** @function setPasswordScheme
  *  @description - captures admin specified input as a regex and persists the regex.
  *  @param regexParams - the admin specified components of the regex 
- *  @return - void
+ *  @return - The newly constructed regex
  */
 function setPasswordScheme(regexParams) {
  
@@ -74,7 +73,27 @@ function setPasswordScheme(regexParams) {
   // persist in mongo
   regexComponents.regex = strRegex;
   db_models.updateRegex(regexComponents);
+  return strRegex;
   
+}
+
+
+function verifyLogin(err,savedUser,req,res) {
+  
+    if(!req.body.username || !req.body.password) {
+      res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
+      return false;
+    }
+ 
+    if(!err && savedUser && req.body.password == savedUser.password) {
+      req.session.user = savedUser.username;
+      res.redirect('/users/' + req.body.username);
+      return true;
+    }
+    
+    res.render('index.ejs', {title: 'SexyGeoHatters',error: ['Incorrect Username or Password']});
+    return false;
+
 }
 
 
@@ -85,22 +104,7 @@ function setPasswordScheme(regexParams) {
  *  @return - void
  */
 function checkLogin(req,res) {
-  
-  if(!req.body.username || !req.body.password) {
-    res.render('index.ejs', {title:'SexyGeoHatters', error:['Provide Username and Password']});
-    return;
-  }
-
-  var verifyLogin = function(err,savedUser) {
-    if(!err && savedUser && req.body.password == savedUser.password) {
-      req.session.user = savedUser.username;
-      res.redirect('/users/' + req.body.username);
-    } else {
-      res.render('index.ejs', {title: 'SexyGeoHatters',error: ['Incorrect Username or Password']});
-    }
-  };
-
-  db_models.findUser(req.body.username,verifyLogin);
+  db_models.findUser(req.body.username,verifyLogin,req,res);
 
 }
 

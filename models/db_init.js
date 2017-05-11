@@ -74,11 +74,11 @@ function insertNewUser(userObj) {
 }
 
 
-function findRegex(checkFunc) {
+function findRegex(checkFunc,req,res) {
   REGEX_MODEL.findOne(null,function(err,savedRegex) {
-        if(!err) checkFunc(null,savedRegex);
+        if(!err) checkFunc(null,savedRegex,req,res);
 	else {
-	  checkFunc(err,null);
+	  checkFunc(err,null,req,res);
 	  console.log(err);
 	}
   });
@@ -97,13 +97,13 @@ function updateRegex(regexComponents) {
   });
 } 
 
-function findUser(username,loginFunc) {
+function findUser(username,loginFunc,req,res) {
   USR_MODEL.findOne({username: username},function(err,registeredUser) {
 	if(err) {
 	  console.log(err);
-	  loginFunc(err,null);
+	  loginFunc(err,null,req,res);
 	} else {
-	  loginFunc(null,registeredUser);
+	  loginFunc(null,registeredUser,req,res);
 	}
   });
 }
