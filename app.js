@@ -3,8 +3,11 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+
 var session = require('express-session');
 var mongoStore = require('connect-mongo')(session);
+
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -42,6 +45,13 @@ app.use('/', index);
 app.use('/users', users);
 
 
+
+app.post('/',function(req,res,next) {
+  res.render('index.ejs',{title: 'SexyGeoHatters', error: []});
+});
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -59,7 +69,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 module.exports = app;
