@@ -1,36 +1,49 @@
-# SexyGeoHatters
-### To Push Anything
-Due to the build limit (100 builds) for codeship, make sure that you use `git commit -m "My message --ci-skip" `
-whenever you push. 
-whenever you push.
+# web-app [ ![Codeship Status for CSE112-GoldTeam/web-app](https://codeship.com/projects/5f33bf40-cb9d-0133-dbda-4a84e368cd36/status?branch=master)](https://codeship.com/projects/59497)
 
-### To CLONE from a specific branch
-Use `git clone -b <branch> <remote_repo>` to pull from a specific branch. 
-Eg. `git clone -b dev https://github.com/lawchihon/SexyGeoHatters.git`, if you want to pull from branch `dev` 
+First Run
+----------------------------
+1. Setup Account with [mLab](https://mlab.com/)
+2. Copy mongoDB access point into app.js:
 
-### To RUN the project
-1. Git clone the project 
-2. Run `npm install` inside the project folder 
-3. Run `npm start` to host the server 
-4. Go to the browser and type in `localhost:3000`
+        $ var mongoURI = process.env.MONGOLAB_URI || 'YOUR MONGODB CONNECTION ON mLAB';
+        
+2. Install [Node.js](http://nodejs.org/download/)
+3. Navigate to the root directory
+4. Install npm dependencies:
 
-### To RUN the test on this project
-1. Run `npm test` inside the project folder  
+        $ npm install
+        $ npm install --global gulp
 
-### If codeship fails to build becuase of the error permission denied
-1. Update the API key for you branch in settings -> deployment -> your branch -> Edit deployment
+6. Use ``gulp`` to run the application
+7. Navigate your browser to [http://localhost:4000](http://localhost:4000/)
 
-### If codeship fails to build becuase push to remote heroku was rejected
-1. on your terminal pull from the heroku server your branch is deploying to by doing
+Push to testing environment
+----------------------------
+1. Simply push your experimental changes to the ``develop`` branch.
+2. Changes may be view on the [staging site](http://fubar-staging.herokuapp.com/).
+
+Logging in as Peter
+----------------------------
+In order to login as peter, use the following credentials
+
+	username: peter@enque.com
+	password: peter
 	
-        a.) type in heroku apps in terminal and ensure that the first app name that displays is
-	    the name of the server you should be deploying to i.e. for backend it should be
-	    sexygeohatters-testing and master should be sexygeohatters. If its not the 
-	    correct server name for your branch then type in
-	        i.)  git remote rm heroku
-		ii.) then type in heroku git:remote -a "name of server corresponding to your branch"
+The live app can be found [here](http://team-fubar.herokuapp.com/).
+	
+Slack Integration can be found here
 
-	b.) git pull heroku master
+	team-fubar.slack.com
+	
+	username: gev@ucsd.edu
+	password: teamfubar
 
-2. resolve conflits and then git add, git commit, git push origin branchname. This should build on
-   codeship and then deploy to heroku.
+Access to CI platform on Codeship
+----------------------------
+Go to the [Codeship](http://codeship.io) website.
+Use the following credentials:
+
+	username: gev@ucsd.edu
+	password: teamfubar
+
+Click the restart button on the latest build to rebuild it.
