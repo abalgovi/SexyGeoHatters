@@ -9,7 +9,7 @@ engines:
             - ruby
             - javascript
             - python
-            -php
+            - php
     eslint:
         enabled: true
     fixme:
