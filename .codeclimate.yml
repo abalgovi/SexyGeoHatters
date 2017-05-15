@@ -34,3 +34,7 @@ exclude_paths:
 - "**.conf.js"
 - "selenium server/"
 - "coverage/"
+- "public/plugins"
+- "public/javascripts"
+- "reports/"
+- "server/"
