@@ -5,9 +5,9 @@
 
   <testsuite name="simpleTest"
     errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
-    tests="2" time="3.172" timestamp="Mon, 15 May 2017 18:44:28 GMT">
+    tests="2" time="4.055" timestamp="Mon, 15 May 2017 19:18:16 GMT">
   
-    <testcase name="Enqué - Body Load" classname="simpleTest" time="3.074" assertions="2">
+    <testcase name="Enqué - Body Load" classname="simpleTest" time="3.957" assertions="2">
 
     
 

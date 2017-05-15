@@ -9,9 +9,9 @@
     "start": "node ./bin/www",
     "postinstall": "node nightwatch.conf.BASIC.js",
     "sauce": "./node_modules/.bin/nightwatch -e chrome",
-    "test-unit": "mocha",
-    "test-e2e": "./node_modules/.bin/nightwatch",
-    "test-coverage": "istanbul cover ./test/e2e/simpleTest.js"
+    "unit": "mocha ./test/unit/*.js",
+    "e2e": "./node_modules/.bin/nightwatch",
+    "coverage": "istanbul cover ./test/**/*.js"
   },
   "dependencies": {
     "async": "^0.9.0",
