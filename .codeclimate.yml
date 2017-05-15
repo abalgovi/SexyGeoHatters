@@ -1,0 +1,46 @@
+---
+engines:
+    csslint:
+        enabled: true
+    duplication:
+        enabled: true
+        config:
+            languages:
+            - ruby
+            - javascript
+            - python
+            - php
+        checks:
+            Similar code:
+                enabled: false
+            Identical code:
+                enabled: false
+    eslint:
+        enabled: true
+    fixme:
+        enabled: true
+    phpmd:
+        enabled: true
+ratings:
+    paths:
+    - "**.css"
+    - "**.inc"
+    - "**.js"
+    - "**.jsx"
+    - "**.module"
+    - "**.php"
+    - "**.py"
+    - "**.rb"
+exclude_paths:
+- config/
+- dist/
+- test/
+- "client/bower_components"
+- "**.conf.js"
+- "selenium server/"
+- "coverage/"
+- "public/plugins"
+- "public/javascripts"
+- "reports/"
+- "server/"
+- "public/stylesheets"
