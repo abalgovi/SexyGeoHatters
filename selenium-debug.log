@@ -1,0 +1,42 @@
+16:26:54.035 INFO - Selenium build info: version: '3.4.0', revision: 'unknown'
+16:26:54.036 INFO - Launching a standalone Selenium Server
+2017-05-15 16:26:54.080:INFO::main: Logging initialized @607ms to org.seleniumhq.jetty9.util.log.StdErrLog
+16:26:54.170 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+ registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
+16:26:54.171 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
+16:26:54.171 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+16:26:54.171 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+Unable to create new instances on this machine.
+16:26:54.171 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+16:26:54.171 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+2017-05-15 16:26:54.254:INFO:osjs.Server:main: jetty-9.4.3.v20170317
+2017-05-15 16:26:54.315:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@d8355a8{/,null,AVAILABLE}
+2017-05-15 16:26:54.386:INFO:osjs.AbstractConnector:main: Started ServerConnector@146ba0ac{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
+2017-05-15 16:26:54.387:INFO:osjs.Server:main: Started @915ms
+16:26:54.387 INFO - Selenium Server is up and running
+16:26:54.775 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+16:26:54.816 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:26:54.853 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 30587
+Only local connections are allowed.
+16:26:56.683 INFO - Detected dialect: OSS
+16:26:56.716 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:26:56.750 INFO - Executing: [get: https://sexygeohatters-testing.herokuapp.com])
+16:27:08.371 INFO - Done: [get: https://sexygeohatters-testing.herokuapp.com]
+16:27:08.385 INFO - Executing: [find elements: By.cssSelector: body])
+16:27:08.439 INFO - Done: [find elements: By.cssSelector: body]
+16:27:08.447 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: body]])
+16:27:08.476 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: body]]
+16:27:08.483 INFO - Executing: [find element: By.cssSelector: #navbar-collapse-1])
+16:27:08.510 INFO - Done: [find element: By.cssSelector: #navbar-collapse-1]
+16:27:08.515 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: #navbar-collapse-1]])
+16:27:08.602 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: #navbar-collapse-1]]
+16:27:08.617 INFO - Executing: [find elements: By.cssSelector: body])
+16:27:08.634 INFO - Done: [find elements: By.cssSelector: body]
+16:27:08.639 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: body]])
+16:27:08.649 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (0c177284db001a456d1c500a11b55966)] -> css selector: body]]
+16:27:08.659 INFO - Executing: [get title])
+16:27:08.666 INFO - Done: [get title]
+16:27:08.673 INFO - Executing: [delete session: b6d3ef57-bfcd-42d9-be29-666cf847f5ef])
+16:27:08.764 INFO - Done: [delete session: b6d3ef57-bfcd-42d9-be29-666cf847f5ef]

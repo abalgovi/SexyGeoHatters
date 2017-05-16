@@ -31,6 +31,9 @@ app.io = require('socket.io')();
 global.__base = __dirname + '/';
 
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://randomgeohatter:sexygeohatters@ds115071.mlab.com:15071/sexygeohatters';
+
+//var mongoURI = process.env.MONGOLAB_URI || 'mongodb://admin:admin@ds061335.mongolab.com:61335/heroku_w9bxpzpc';
+
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
 
@@ -112,7 +115,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 //note to j
 
 // required for passport
-app.use(session({secret: '1234567890QWERTY'}));
+app.use(session({secret: '1234567890QWERTY',  resave: true, saveUninitialized: true}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
