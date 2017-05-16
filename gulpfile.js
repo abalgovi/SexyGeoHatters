@@ -1,11 +1,11 @@
+'use strict';
+
 // gulpfile.js
 var gulp = require('gulp');
 var child_process = require('child_process');
-//var gutil = require('gulp-util');
-//var clean = require('gulp-clean');
-//var concat = require('gulp-concat');
-//var uglify = require('gulp-uglify');
-//var rename = require('gulp-rename');
+var jshint = require('gulp-jshint');
+var jsdoc = require('gulp-jsdoc3');
+var util = require('gulp-util');
 var server = require('gulp-express');
 var Server = require('karma').Server;
 var browserSync = require('browser-sync');
@@ -18,18 +18,6 @@ var plugins= require('gulp-load-plugins')({
 	lazy: false
 
 });
-
-
-//console.log(plugins);
-//var argv = require('yargs').argv;
-
-//var nodemon = require('gulp-nodemon');
-//var jshint = require('gulp-jshint');
-
-//var checkPages = require('check-pages');
-
-//var mongobackup = require('mongobackup');
-//var shell = require('gulp-shell');
 
 
 var exec = require('child_process').exec;
@@ -64,10 +52,23 @@ gulp.task('clean', function () {
     .pipe(plugins.clean());
 });
 
-gulp.task('lint', function() {
-  return gulp.src('./*.js')
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
+
+gulp.task('lint', function(){
+	return gulp.src(['routes/api/appointment/appointment.controller.js',
+			 'routes/api/business/business.controller.js',
+		  	 'routes/api/example/example.controller.js',
+		  	 'routes/api/form/form.controller.js',
+			 'app.js'])
+				  .pipe(jshint({esversion: 6, node: true}))
+				  .pipe(jshint.reporter('default'));
+});
+
+gulp.task('jsdocs',function(cb) {
+	gulp.src(['routes/api/appointment/appointment.controller.js',
+		  'routes/api/business/business.controller.js',
+		  'routes/api/example/example.controller.js',
+		  'routes/api/form/form.controller.js',
+		  '']).pipe(jsdoc(cb));
 });
 
 gulp.task('vendor', function() {
@@ -199,7 +200,7 @@ gulp.task('mongorestore', function() {
 
 
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['browser-sync','jsdocs','lint']);
 
 var karma = require('karma').server;
 /**

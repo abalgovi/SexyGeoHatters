@@ -1,5 +1,6 @@
 /**
-* Using Rails-like standard naming convention for endpoints.
+* @module example.controller
+* @description Using Rails-like standard naming convention for endpoints.
 * GET     /users              ->  index
 * POST    /users              ->  create
 * GET     /users/:id          ->  show
@@ -25,7 +26,12 @@ exports.index = function(req, res) {
   });
 };
 
-//Create a User
+/** @function create
+ *  @description - Create a user 
+ *  @param req - request object that contains user input
+ *  @param res - response object used to render pages depending on input
+ *  @return - void
+ */
 exports.create = function(req, res) {
 
   // grab our db object from the request
@@ -39,7 +45,12 @@ exports.create = function(req, res) {
   });
 };
 
-// Get a single user
+/** @function show
+ *  @description - retrieve a user
+ *  @param req - request object that contains user input
+ *  @param res - response object used to render pages depending on input
+ *  @return - void
+ */
 exports.show = function(req, res) {
 
   // grab our db object from the request
@@ -60,7 +71,13 @@ exports.update = function(req, res) {
 
 };
 
-// Deletes a thing from the DB.
+
+/** @function destroy
+ *  @description - Deletes a thing from the DB. 
+ *  @param req - request object that contains user input
+ *  @param res - response object used to render pages depending on input
+ *  @return - void
+ */
 exports.destroy = function(req, res) {
   // grab our db object from the request
   var db = req.db;
