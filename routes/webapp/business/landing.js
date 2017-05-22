@@ -11,7 +11,7 @@ exports.get = function (req, res, next) {
         });
     
     res.render('business/landing', {
-        title: 'Landing Page',
+        title: 'Home',
         layout: false
     });
 };

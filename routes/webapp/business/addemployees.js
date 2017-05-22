@@ -1,8 +1,8 @@
 var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
-// var sendgrid  = require('sendgrid')('robobetty', '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');
-var sendgrid = require('sendgrid')('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');
+var sendgridHelper = require('sendgrid').mail; 
+var sendgrid = require('sendgrid')('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');
 var ObjectId = require('mongodb').ObjectID;
 
  /**
@@ -12,7 +12,8 @@ var ObjectId = require('mongodb').ObjectID;
  * @returns The appropriate data about the employee
  */
 exports.get = function(req,res){
-	    var database =  req.db;
+	
+	var database =  req.db;
         var employeeDB = database.get('employees');
         var employee;
         var notemployee;
@@ -45,8 +46,6 @@ exports.get = function(req,res){
                     }
 
                      notemployee = results;
-                    //  console.log('Found some not-registered employees');
-                    //  console.log(notemployee);
                      cb();
                 });
             }
@@ -103,65 +102,45 @@ exports.post = function(req,res,next){
             // need to create a randomly generated bCrypted Password
         });
         // can't use variables in an object's field. Instead, create the field outside, then put it as the text argument in sendgrid
-        var emailContent = 'Hello ' + name + ', \n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: ' + 'http://team-fubar.herokuapp.com/employeeregister?token=' + token;
+       	
+	var email = new sendgridHelper.Mail();
+	email.setTemplateId('7d077a9a-8dd8-49fa-b7ba-aae35c72a323');
+	email.setFrom(new sendgridHelper.Email('abalgovi@ucsd.edu'));
+	
+	// configure the email content
+	personalization = new sendgridHelper.Personalization();
+	personalization.addTo(new sendgridHelper.Email(inputEmail));
+	personalization.setSubject('New Employee Signup');
+	personalization.addHeader(new sendgridHelper.Header('X-Test','true'));
+	personalization.addSubstitution(new sendgridHelper.Substitution('%name%',name));
+	personalization.addSubstitution(new sendgridHelper.Substitution('%ownerOfOrganization%',req.user[0].fname + ' ' + req.user[0].lname));
+	personalization.addSubstitution(new sendgridHelper.Substitution('%companyName%',ObjectId(businessID).toString()));
+	personalization.addSubstitution(new sendgridHelper.Substitution('%token%',token));
 
-        sendgrid.send({
-            to: inputEmail,
-            from: 'test@localhost.com',
-            subject: 'Employee Signup',
-            text: emailContent
-        }, function (err){
-            if (err) {
-                return next(err);
-            }
-        });
+	email.addPersonalization(personalization);
+	var request = sendgrid.emptyRequest({
+	
+		method: 'POST',
+		path: '/v3/mail/send',
+		body: email.toJSON()
 
+	});
+	
+	// send email
+	sendgrid.API(request,function(error,response) {
+		if(error) {
+		  console.log(response.body);
+		  return next(error);
+		}
+		console.log('sent email');
+	});
+ 
         res.redirect('/addemployees');
     });
+    
 }
 
-// OLD GOLD TEAM CODE
-/*exports.post = function(req,res){
-    var parsed = baby.parse(req.body.csvEmployees);
-    var rows = parsed.data;
-    var database =  req.db;
-    var employeeDB = database.get('employees');
-    var businessID = req.user[0].business;
 
-
-    for(var i = 0; i < rows.length; i++){
-        var username = rows[i][0];
-        var email = rows[i][1];
-        var nameArr = username.split(' ');
-        var fname = nameArr[0];
-        var lname = nameArr[1];
-        var token = randomToken();
-        employeeDB.insert({
-            business: ObjectId(businessID),
-            fname: fname,
-            lname: lname,
-            email: email,
-            registrationToken : token,
-            admin: false
-        });
-
-
-        sendgrid.send({
-            to: email,
-            from: 'test@localhost',
-            subject: 'Employee Signup',
-            text: 'Hello ' + username + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-            'http://robobetty-dev.herokuapp.com/employeeregister?token=' + token
-        }, function (err){
-            if (err) {
-                return next(err);
-            }
-        });
-    }
-    res.redirect('/addemployees');
-}*/
-
-
- function randomToken() {
-        return crypto.randomBytes(24).toString('hex');
-    }
+function randomToken() {
+  return crypto.randomBytes(24).toString('hex');
+}

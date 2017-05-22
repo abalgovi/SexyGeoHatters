@@ -2,7 +2,7 @@ var auth = require('../../../lib/auth');
 var async = require('async');
 
 exports.get = function (req, res) {
-
+	
 	var isPeter = req.user[0].peter;
 	var isOwner = req.user[0].admin;
 	var employeeId = req.user[0]._id;

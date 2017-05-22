@@ -27,29 +27,33 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.10.3",
     "express.io": "^1.1.13",
+    "express3-handlebars": "^0.5.2",
     "gm": "^1.17.0",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.5.2",
+    "gulp-jsdoc3": "^1.0.1",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.1.0",
     "gulp-util": "^3.0.4",
     "hjs": "~0.0.6",
     "imgur": "^0.1.7",
+    "jsdoc": "^3.4.3",
+    "jshint": "^2.9.4",
     "mocha": "*",
     "mongodb": "*",
     "monk": "*",
     "morgan": "~1.5.1",
     "multer": "^0.1.8",
     "newrelic": "^1.16.4",
-    "passport": "~0.1.17",
-    "passport-local": "~0.1.6",
+    "passport": "^0.1.18",
+    "passport-local": "^0.1.6",
     "plivo-node": "^0.2.5",
     "plugin": "^0.3.3",
     "request": "^2.69.0",
-    "sendgrid": "^1.6.0",
+    "selenium-download": "^2.0.10",
+    "sendgrid": "^5.1.0",
     "serve-favicon": "^2.2.1",
     "socket.io": "^1.4.5",
-    "selenium-download": "^2.0.10",
     "underscore": "^1.8.1"
   },
   "devDependencies": {
@@ -61,7 +65,7 @@
     "gulp-connect": "^2.2.0",
     "gulp-express": "^0.1.7",
     "gulp-gh-pages": "^0.4.0",
-    "gulp-jshint": "^1.9.2",
+    "gulp-jshint": "^2.0.4",
     "gulp-load-plugins": "^0.8.1",
     "gulp-minify-css": "^0.5.1",
     "gulp-nodemon": "^1.0.5",
@@ -78,6 +82,6 @@
     "yargs": "^3.4.4"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "6.10.x"
   }
 }

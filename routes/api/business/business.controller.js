@@ -1,5 +1,6 @@
 /**
-* Using Rails-like standard naming convention for endpoints.
+* @module business.controller
+* @description Using Rails-like standard naming convention for endpoints.
 * GET     /users              ->  index
 * POST    /users              ->  create
 * GET     /users/:id          ->  show
@@ -11,7 +12,12 @@
 
 var _ = require('underscore');
 
-
+/** @function index
+ *  @description - retrieve everything from business collection
+ *  @param req - request object that contains user input
+ *  @param res - response object used to render pages depending on input
+ *  @return - void
+ */
 exports.index = function(req, res) {
 
   // grab our db object from the request

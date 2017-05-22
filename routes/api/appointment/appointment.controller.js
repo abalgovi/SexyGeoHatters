@@ -1,15 +1,16 @@
 /**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /appointment              ->  show
+ * @module appointment.controller
+ * @description Using Rails-like standard naming convention for endpoints.
  */
 
-'use strict';
 var ObjectID = require('mongodb').ObjectID;
 
-/*
- * Shows all appointments
+/** @function index
+ *  @description - Show all appointments
+ *  @param req - request object that contains user input
+ *  @param res - response object used to render pages depending on input
+ *  @return - void
  */
-
 exports.index = function(req, res) {
 
   // grab our db object from the request
@@ -24,7 +25,8 @@ exports.index = function(req, res) {
 };
 
 /**
- * Confirms the users first name, last name, date of birth and business id
+ * @function confirm
+ * @description Confirms the users first name, last name, date of birth and business id
  * @param {Object} req
  * @param {Object} res
  * @param {Object} next
@@ -62,7 +64,8 @@ exports.confirm = function (req, res, next) {
 };
 
 /**
- * Retrieves the list of appointments
+ * @function retrieve
+ * @description Retrieves the list of appointments
  * @param {Object} req
  * @param {Object} res
  * @param {Object} next
@@ -84,7 +87,8 @@ exports.retrieve = function (req, res, next) {
 };
 
 /**
- * Transitions the state to the next state
+ * @function nextState
+ * @description Transitions the state to the next state
  * @param {Object} req
  * @param {Object} res
  * @param {Object} next
@@ -118,7 +122,8 @@ exports.nextState = function (req, res, next) {
 };
 
 /**
- * PUT an updated state
+ * @function updateState
+ * @description PUT an updated state
  * @param {Object} req
  * @param {Object} res
  * @param {Object} next
