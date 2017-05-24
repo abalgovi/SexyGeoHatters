@@ -9,7 +9,7 @@
     "start": "node ./bin/www",
     "postinstall": "node nightwatch.conf.BASIC.js",
     "sauce": "./node_modules/.bin/nightwatch -e chrome",
-    "unit": "mocha ./test/unit/*.js",
+    "unit": "mocha --reporter nyan ./test/unit/*.js",
     "e2e": "./node_modules/.bin/nightwatch",
     "coverage": "istanbul cover ./test/**/*.js"
   },

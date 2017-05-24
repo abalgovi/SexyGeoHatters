@@ -5,16 +5,16 @@
 
   <testsuite name="simpleTest"
     errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
-    tests="2" time="14.23" timestamp="Mon, 15 May 2017 23:26:54 GMT">
+    tests="2" time="3.389" timestamp="Tue, 16 May 2017 00:54:19 GMT">
   
-    <testcase name="Enqué - Body Load" classname="simpleTest" time="14.12" assertions="2">
+    <testcase name="Enqué - Body Load" classname="simpleTest" time="3.277" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.1130" assertions="2">
+    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.1120" assertions="2">
 
     
 
