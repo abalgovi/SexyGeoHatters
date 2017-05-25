@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
+    <script src="http://formbuilder.online/assets/js/form-render.min.js"></script>
+
+</head>
+
+<body>
+	<form action='appointment' method='get' id='companyForm'>
+		<select name='business'>
+		    {{#each companies}}
+		    <option value='{{this}}'>{{this}}</option>
+		    {{/each}}
+		</select>
+		<input type='submit' value='select business'>
+	</form>
+	
+	<!-- render form if response contains the necessary data -->
+	    
+	    {{#if formData}}
+	        <form action='forms' method='post' id='appointment'>
+	            <input type='hidden' name='formData' id='formData'>
+		    <input type='submit' value='Make appointment' id='submit-action'>
+                </form>
+    
+                <!--is populated with json string that represent the persisted form for the
+		company-->
+                <p id='formFields' hidden>{{formData}}</p>
+            {{/if}}
+
+
+	<script type='text/javascript'>
+
+	    var formOpts = {
+		formData: document.getElementById('formFields').innerHTML,
+		dataType: 'json',
+	    }
+	    $(document.getElementById('appointment')).formRender(formOpts);
+	</script>
+ 
+
+
+
+</body>
+</html>
+

@@ -3,18 +3,28 @@
     <h1>Form Editor </h1>
     <div id="txt" class="pull-right"></div>
     <h1 class="pull-right" id="currentDate"></h1>
-    {{#if empty}}
-	<p align='center' id='error'><font size='4pt' color='red'>Customized form must have at least one
-	field.</font></p>
-    {{/if}}
+    <script type='text/x-handlebars-template'>
+    	
+	{{#if empty}}
+	  <p align='center' id='error'><font size='4pt' color='red'>Customized form must have at least one
+	  field.</font></p>
+        {{else}} 
+	  {{#if success}}<p align='center' id='success'><font size='4pt' color='green'>
+	  Successfully saved your form!<br>Your form as seen by your customers</font></p>
+	  {{/if}}
+       {{/if}}
+    
+     </script>
 </section>
 
 <section class="content">
 
-
     <form action='forms' method='post' id='formGenerator'>
-    	<input type='hidden' name='formData' id='formData'>
+	<input type='hidden' name='formData' id='formData'>
     </form>
+    
+    <!--is populated with json string that represent the persisted form for the company -->
+    <p id='formFields' hidden>{{formData}}</p>
 
     <input type='submit' value='Save Form' id='save-action' form='formGenerator'>
     <button type='button' id='clear-action'>Clear Fields</button>
@@ -28,10 +38,12 @@
 
 	  // remove the clear,{},and save buttons provided by formBuilder
 	  var options = { showActionButtons: false };
-    	  
+	  if(document.getElementById('formFields').innerHTML[0] == '[')
+	      options.formData = document.getElementById('formFields').innerHTML;
+	  
 	  // if form changed and has content, then submit
 	  var formbuilder = $(document.getElementById('formGenerator')).formBuilder(options);
-	  document.getElementById('save-action').addEventListener('click', function() { 
+	  document.getElementById('save-action').addEventListener('click', function() {
 	     document.getElementById('formData').value = formbuilder.actions.getData('json');
 	  });
 

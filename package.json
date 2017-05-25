@@ -27,6 +27,7 @@
     "express-session": "^1.10.3",
     "express.io": "^1.1.13",
     "express3-handlebars": "^0.5.2",
+    "formBuilder": "^2.2.7",
     "gm": "^1.17.0",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.5.2",

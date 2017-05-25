@@ -13,6 +13,7 @@ var addEmployees = require('./addemployees');
 var employeeRegister = require('./employeeregister');
 var businesssetting = require('./businesssetting');
 var formbuilder = require('./forms');
+var appointment = require('./appointment');
 
 /*
  * TODO: Explain where this export is pointing to.
@@ -44,6 +45,9 @@ module.exports = function (passport) {
     }));
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
+    
+    router.get('/appointment',appointment.get);
+    router.get('/appointment',appointment.post);
 
     router.get('/addemployees', isLoggedInBusiness, addEmployees.get);
     router.post('/addemployees', isLoggedInBusiness, addEmployees.post);

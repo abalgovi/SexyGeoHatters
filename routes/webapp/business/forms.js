@@ -25,22 +25,35 @@ exports.get = function(req,res,next){
     var name = req.body.inputName;
     var inputEmail = req.body.inputEmail;
     var inputPhone = req.body.inputPhone;
-
+    
+    // construct response parameters for forms.handlebars to use
     var responseParams =  {
         title: 'Form Editor',
         isOwner: req.user[0].admin,
         businessId: req.user[0].business,
-        employees: "active" 
+	formData: '',
+        forms: "active"
     }
 
+    // url parameters exist after the user submited a new form to store
     var formEdit = req.query.formEdit;
     if(formEdit) {
     	if(formEdit == 'success') responseParams.success = true;
     	else if(formEdit == 'error') responseParams.error = true;
 	else responseParams.empty = true;
     }
+    
+    var formsCollection = req.db.get('forms');
+    var businessID = req.user[0].business;
 
-    res.render('business/forms', responseParams);
+    // grab customized form from db if any
+    formsCollection.findOne({businessId: businessID}).then((doc) => {
+	if(doc != null && doc.businessId != null) responseParams.formData = doc.formParams;
+	console.log(doc);
+	console.log(responseParams.formData);
+        res.render('business/forms', responseParams);
+    });
+
 }
 
 exports.post = function(req,res,next) {
@@ -49,13 +62,13 @@ exports.post = function(req,res,next) {
     var businessID = req.user[0].business;
     var formJson = req.body.formData;
 
-    if(formJson == null || formJson.length <= 2) {
+    if(!formJson || formJson.length <= 2) {
         res.redirect('/forms?formEdit=empty');
 	return;
     }
 
     formsCollection.findOneAndUpdate({businessId: businessID},
-		    {businessId: businessID, formFields: formJson}).then((doc) => {
+		    {businessId: businessID, formParams: formJson}).then((doc) => {
 	
 	// if document is not in collection insert a new one
 	if(!doc.value && doc.lastErrorObject)
@@ -66,6 +79,5 @@ exports.post = function(req,res,next) {
 	console.log('Error when updating form structure ' + err);
 	res.redirect('/forms?formEdit=error');
     });
-    
 
 }
