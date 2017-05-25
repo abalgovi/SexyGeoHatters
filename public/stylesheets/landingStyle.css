@@ -13,13 +13,17 @@ hr {
 
 h1 {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-    color: #34495e;
+    color: #092543;
     font-weight: 700;
 
 }
 
 #h1Custom{
-    color: #fff;
+    color: white;
+}
+
+#hCustom{
+    color: #092543;
 }
 
 /*
@@ -27,7 +31,6 @@ h1 {
 */
 #format_Footer_h3{
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-    color: #ffae00;
     font-weight: 400;
 
 }
@@ -50,7 +53,7 @@ section{
 }
 
 #custom_hr{
-    border-color: #ffae00;
+    border-color: #071c33;
     border-width: 3px;
     max-width: 75px;
 }
@@ -134,7 +137,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
     color: #ffffff;
-    background-color: #ffae00;
+    background-color: #071C33;
     border-color: #ffae00;
 }
 .btn-primary:active,
@@ -190,7 +193,7 @@ fieldset[disabled] .btn-primary.active {
 
 /***Carousel***/
 .carousel{
-    background: #ffae00;
+    background: #092543;
     margin-top: 20px;
 }
 .carousel .item img{
@@ -226,11 +229,12 @@ footer .footer-below {
     display: inline-block;
     height: 50px;
     width: 50px;
-    border: 2px solid white;
+    border: 2px solid #092543;
     border-radius: 100%;
     text-align: center;
     font-size: 20px;
     line-height: 45px;
+    color: #092543;
 }
 .btn:focus,
 .btn:active,
@@ -239,7 +243,7 @@ footer .footer-below {
 }
 
 footer a{
-    color: #ffae00;
+    color: white;
 }
 
 /********************* NavBar CSS **************************/
@@ -259,7 +263,7 @@ footer a{
     text-transform: uppercase;
 }
 .navbar-default .navbar-brand {
-    color: #ffae00;
+    color: white;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: #ffffff;
@@ -314,26 +318,23 @@ footer a{
     }
 }
 
-.navbar-collapse, .navbar{
-    border-bottom-color: #ffae00;
-}
-
 .navbar-landing-padding{
     margin-right: 5px;
 }
 
 /***Contact form***/
 .btn-warning{
-    background-color: #071C33;
+    background-color: #fff;
+    color:#092543;
 }
 
 .btn-warning:hover{
-    color: #071C33;
     background-color: #fff;
+    color:#092543;
 }
 
 .control-label{
-    color: #fff;
+    color: white;
     text-shadow: 1px 0 #071C33, 0 1px #071C33, 1px 0 #071C33, 0 1px #071C33;
 }
 
@@ -359,7 +360,7 @@ header {
     background-size: cover;
     -o-background-size: cover;
     background-position: center;
-    background-image: url('../images/bgFilter.jpg');
+    background-image: url('../images/doctors-office-waiting-room-17dwxkz.jpg');
     text-align: center;
     color: white;
 }
@@ -518,15 +519,15 @@ header .header-content .header-content-inner p {
 
 .price.panel-green>.panel-heading {
     color: #fff;
-    background-color: #ffae00;
-    border-color: #ffae00;
-    border-bottom: 1px solid #ffcf66;
+    background-color: green;
+    border-color: green;
+    border-bottom: 1px lightgreen;
 }
 
 
 .price.panel-green>.panel-body {
     color: #fff;
-    background-color: #ffc64d;
+    background-color: rgba(0, 128, 0, 0.71);
 }
 
 
@@ -580,7 +581,7 @@ header .header-content .header-content-inner p {
 }
 
 .btn-success {
-    background-color: #ffae00;
+    background-color: green;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     border-radius: 4px; /* Overrides bootstrap rounded corners*/
@@ -596,8 +597,8 @@ header .header-content .header-content-inner p {
 }
 
 .btn-success:hover {
-    background-color: #ffae00;
-    color: #ffffff;
+    background-color: green;
+    color: #fff;
 }
 
 .btn-danger:hover {
