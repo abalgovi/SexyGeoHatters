@@ -24,12 +24,12 @@ module.exports = {
     browser
       .url('https://sexygeohatters-testing.herokuapp.com/login')
       .waitForElementVisible('body', 5000)
-      .setValue('input[name="email"]', 'tester@email.com')
-      .setValue('input[name="password"]', ['112testerucsd', browser.Keys.ENTER])
+      .setValue('input[name="email"]', 'hachrist@ucsd.edu')
+      .setValue('input[name="password"]', ['helloworld11', browser.Keys.ENTER])
   },
 
   // Inside dashboard check
   'Enqué - Inside Dashboard page': function(browser) {
-     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/login').end();
+     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
   }
 };

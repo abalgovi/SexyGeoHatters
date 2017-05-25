@@ -5,23 +5,23 @@
 
   <testsuite name="simpleTest"
     errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
-    tests="4" time="6.192" timestamp="Thu, 25 May 2017 21:38:58 GMT">
+    tests="4" time="5.792" timestamp="Thu, 25 May 2017 22:32:47 GMT">
   
-    <testcase name="Enqué - Body Load" classname="simpleTest" time="4.743" assertions="2">
+    <testcase name="Enqué - Body Load" classname="simpleTest" time="3.623" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.01900" assertions="2">
+    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.01300" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.269" assertions="1">
+    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.995" assertions="1">
 
     
     </testcase>

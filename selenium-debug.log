@@ -1,58 +1,58 @@
-14:38:58.108 INFO - Selenium build info: version: '3.3.0', revision: 'b526bd5'
-14:38:58.108 INFO - Launching a standalone Selenium Server
-2017-05-25 14:38:58.128:INFO::main: Logging initialized @270ms to org.seleniumhq.jetty9.util.log.StdErrLog
-14:38:58.188 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+15:32:46.935 INFO - Selenium build info: version: '3.3.0', revision: 'b526bd5'
+15:32:46.936 INFO - Launching a standalone Selenium Server
+2017-05-25 15:32:46.956:INFO::main: Logging initialized @265ms to org.seleniumhq.jetty9.util.log.StdErrLog
+15:32:47.015 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
  registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
-14:38:58.189 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+15:32:47.016 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
  registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
-14:38:58.189 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-14:38:58.189 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+15:32:47.016 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+15:32:47.016 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
 Unable to create new instances on this machine.
-14:38:58.189 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-14:38:58.189 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
-2017-05-25 14:38:58.236:INFO:osjs.Server:main: jetty-9.2.20.v20161216
-2017-05-25 14:38:58.266:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@5c3bd550{/,null,AVAILABLE}
-2017-05-25 14:38:58.302:INFO:osjs.AbstractConnector:main: Started ServerConnector@1ce92674{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
-2017-05-25 14:38:58.303:INFO:osjs.Server:main: Started @446ms
-14:38:58.303 INFO - Selenium Server is up and running
-14:38:58.555 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
-14:38:58.583 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-14:38:58.599 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 32275
+15:32:47.016 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+15:32:47.016 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+2017-05-25 15:32:47.063:INFO:osjs.Server:main: jetty-9.2.20.v20161216
+2017-05-25 15:32:47.094:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@5c3bd550{/,null,AVAILABLE}
+2017-05-25 15:32:47.126:INFO:osjs.AbstractConnector:main: Started ServerConnector@1ce92674{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
+2017-05-25 15:32:47.127:INFO:osjs.Server:main: Started @437ms
+15:32:47.127 INFO - Selenium Server is up and running
+15:32:47.368 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+15:32:47.392 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+15:32:47.406 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 4625
 Only local connections are allowed.
-14:38:59.887 INFO - Detected dialect: OSS
-14:38:59.913 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-14:38:59.934 INFO - Executing: [get: https://sexygeohatters-testing.herokuapp.com])
-14:39:02.870 INFO - Done: [get: https://sexygeohatters-testing.herokuapp.com]
-14:39:02.880 INFO - Executing: [find elements: By.cssSelector: body])
-14:39:02.924 INFO - Done: [find elements: By.cssSelector: body]
-14:39:02.931 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]])
-14:39:02.958 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]]
-14:39:02.964 INFO - Executing: [find element: By.cssSelector: #navbar-collapse-1])
-14:39:02.983 INFO - Done: [find element: By.cssSelector: #navbar-collapse-1]
-14:39:02.987 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: #navbar-collapse-1]])
-14:39:03.061 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: #navbar-collapse-1]]
-14:39:03.072 INFO - Executing: [find elements: By.cssSelector: body])
-14:39:03.090 INFO - Done: [find elements: By.cssSelector: body]
-14:39:03.099 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]])
-14:39:03.109 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]]
-14:39:03.121 INFO - Executing: [get title])
-14:39:03.132 INFO - Done: [get title]
-14:39:03.141 INFO - Executing: [get: https://sexygeohatters-testing.herokuapp.com/login])
-14:39:03.566 INFO - Done: [get: https://sexygeohatters-testing.herokuapp.com/login]
-14:39:03.572 INFO - Executing: [find elements: By.cssSelector: body])
-14:39:03.582 INFO - Done: [find elements: By.cssSelector: body]
-14:39:03.588 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]])
-14:39:03.610 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: body]]
-14:39:03.617 INFO - Executing: [find element: By.cssSelector: input[name="email"]])
-14:39:03.642 INFO - Done: [find element: By.cssSelector: input[name="email"]]
-14:39:03.648 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: input[name="email"]], [t, e, s, t, e, r, @, e, m, a, i, l, ., c, o, m]])
-14:39:03.805 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: input[name="email"]], [t, e, s, t, e, r, @, e, m, a, i, l, ., c, o, m]]
-14:39:03.809 INFO - Executing: [find element: By.cssSelector: input[name="password"]])
-14:39:03.835 INFO - Done: [find element: By.cssSelector: input[name="password"]]
-14:39:03.840 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: input[name="password"]], [1, 1, 2, t, e, s, t, e, r, u, c, s, d, ]])
-14:39:04.402 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (8795b80fdb086eb4b1bcd26daedd9603)] -> css selector: input[name="password"]], [1, 1, 2, t, e, s, t, e, r, u, c, s, d, ]]
-14:39:04.410 INFO - Executing: [get current url])
-14:39:04.419 INFO - Done: [get current url]
-14:39:04.425 INFO - Executing: [delete session: 864a5f7b-8ade-40a0-a3b0-6a581f6a0866])
-14:39:04.561 INFO - Done: [delete session: 864a5f7b-8ade-40a0-a3b0-6a581f6a0866]
+15:32:48.643 INFO - Detected dialect: OSS
+15:32:48.680 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Simple Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+15:32:48.703 INFO - Executing: [get: https://sexygeohatters-testing.herokuapp.com])
+15:32:50.370 INFO - Done: [get: https://sexygeohatters-testing.herokuapp.com]
+15:32:50.380 INFO - Executing: [find elements: By.cssSelector: body])
+15:32:50.429 INFO - Done: [find elements: By.cssSelector: body]
+15:32:50.435 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]])
+15:32:50.494 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]]
+15:32:50.500 INFO - Executing: [find element: By.cssSelector: #navbar-collapse-1])
+15:32:50.526 INFO - Done: [find element: By.cssSelector: #navbar-collapse-1]
+15:32:50.530 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: #navbar-collapse-1]])
+15:32:50.661 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: #navbar-collapse-1]]
+15:32:50.669 INFO - Executing: [find elements: By.cssSelector: body])
+15:32:50.800 INFO - Done: [find elements: By.cssSelector: body]
+15:32:50.805 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]])
+15:32:50.815 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]]
+15:32:50.822 INFO - Executing: [get title])
+15:32:50.829 INFO - Done: [get title]
+15:32:50.836 INFO - Executing: [get: https://sexygeohatters-testing.herokuapp.com/login])
+15:32:51.196 INFO - Done: [get: https://sexygeohatters-testing.herokuapp.com/login]
+15:32:51.207 INFO - Executing: [find elements: By.cssSelector: body])
+15:32:51.224 INFO - Done: [find elements: By.cssSelector: body]
+15:32:51.232 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]])
+15:32:51.293 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: body]]
+15:32:51.300 INFO - Executing: [find element: By.cssSelector: input[name="email"]])
+15:32:51.330 INFO - Done: [find element: By.cssSelector: input[name="email"]]
+15:32:51.338 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: input[name="email"]], [h, a, c, h, r, i, s, t, @, u, c, s, d, ., e, d, u]])
+15:32:51.562 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: input[name="email"]], [h, a, c, h, r, i, s, t, @, u, c, s, d, ., e, d, u]]
+15:32:51.568 INFO - Executing: [find element: By.cssSelector: input[name="password"]])
+15:32:51.594 INFO - Done: [find element: By.cssSelector: input[name="password"]]
+15:32:51.599 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: input[name="password"]], [h, e, l, l, o, w, o, r, l, d, 1, 1, ]])
+15:32:52.823 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (53053e4a52b2a3960dd59014d8e06a43)] -> css selector: input[name="password"]], [h, e, l, l, o, w, o, r, l, d, 1, 1, ]]
+15:32:52.835 INFO - Executing: [get current url])
+15:32:52.842 INFO - Done: [get current url]
+15:32:52.846 INFO - Executing: [delete session: 62581c30-6a86-49d0-8ea3-9c7c3f334ee7])
+15:32:52.986 INFO - Done: [delete session: 62581c30-6a86-49d0-8ea3-9c7c3f334ee7]
