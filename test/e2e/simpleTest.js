@@ -15,7 +15,7 @@ module.exports = {
   'Enqué - Get Title': function(browser) {
    	browser.getTitle(function(title) {
     	this.assert.equal(typeof title, 'string');
-     	this.assert.equal(title, 'Landing Page');
+     	this.assert.equal(title, 'Home');
    	})
   }, 
 
@@ -30,6 +30,6 @@ module.exports = {
 
   // Inside dashboard check
   'Enqué - Inside Dashboard page': function(browser) {
-     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
+     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/login').end();
   }
 };

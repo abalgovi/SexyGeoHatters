@@ -40,12 +40,3 @@ Slack Integration can be found here
 	username: gev@ucsd.edu
 	password: teamfubar
 
-Access to CI platform on Codeship
-----------------------------
-Go to the [Codeship](http://codeship.io) website.
-Use the following credentials:
-
-	username: gev@ucsd.edu
-	password: teamfubar
-
-Click the restart button on the latest build to rebuild it.
