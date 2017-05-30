@@ -28,8 +28,8 @@ module.exports = {
       .setValue('input[name="password"]', ['112testerucsd', browser.Keys.ENTER])
   },
 
-  // Inside dashboard check
-  'Enqué - Inside Dashboard page': function(browser) {
-     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
-  }
+//   // Inside dashboard check
+//   'Enqué - Inside Dashboard page': function(browser) {
+//      browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
+//   }
 };
