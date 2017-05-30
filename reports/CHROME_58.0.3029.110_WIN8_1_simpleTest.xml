@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="4">
+
+  <testsuite name="simpleTest"
+    errors="0" failures="1" hostname="" id="" package="simpleTest" skipped="0"
+    tests="4" time="7.019" timestamp="Tue, 23 May 2017 05:23:52 GMT">
+  
+    <testcase name="Enqué - Body Load" classname="simpleTest" time="4.418" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.01500" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.083" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Inside Dashboard page" classname="simpleTest" time="1.503" assertions="1">  <failure message="Testing if the URL equals &quot;https://sexygeohatters-testing.herokuapp.com/dashboard&quot;.">    at Object.Enqué - Inside Dashboard page (C:\Users\Enzo\Documents\GitHub\SexyGeoHatters\test\e2e\simpleTest.js:33:21)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)</failure>
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
