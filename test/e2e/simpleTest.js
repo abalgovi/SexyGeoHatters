@@ -15,7 +15,7 @@ module.exports = {
   'Enqué - Get Title': function(browser) {
    	browser.getTitle(function(title) {
     	this.assert.equal(typeof title, 'string');
-     	this.assert.equal(title, 'Landing Page');
+     	this.assert.equal(title, 'Home');
    	})
   }, 
 
