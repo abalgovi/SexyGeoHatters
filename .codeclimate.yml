@@ -44,3 +44,4 @@ exclude_paths:
 - "reports/"
 - "server/"
 - "public/stylesheets"
+- "docs/"
