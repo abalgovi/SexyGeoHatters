@@ -9,10 +9,10 @@ exports.get = function(req,res) {
 
 	    var appointmentCollection = req.db.get('appointments');
             getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
+	       console.log(hours);
 	       res.render('business/appointment',{layout: false, 
 			                          title:'Appointment Times',
-						  hrs: hours});
-	       console.log("dsfsd");
+						  hrs: JSON.stringify(hours)});
 	    });
 	    
 	} else {
@@ -72,7 +72,7 @@ function getAvailableDates(db,preferedDate,companyName,res) {
                
 	       // for each hour within the selected week, return every hour that is not taken
 	       var currDate = new Date(preferedDate), weekLater = new Date(preferedDate),
-	       availableHrs = [],ttlHours = [];
+	       availableHrs = {},ttlHours = [];
 	       weekLater.setDate(weekLater.getDate() + 7);
 
 	       var endHr = operInfo.maxTime.split(':'), srtHr = operInfo.minTime.split(':');
