@@ -158,7 +158,6 @@ function find (arr, key, val) { // Find array element which has a key value of v
   return null;
 }
 
-
 app.post('/webhook', function (req, res) {
     try{
         res.setHeader('Content-Type', 'application/json');
