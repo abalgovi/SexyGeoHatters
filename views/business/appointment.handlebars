@@ -3,42 +3,95 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> 
     <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
     <script src="http://formbuilder.online/assets/js/form-render.min.js"></script>
+<style>
+#leftForm {
+	width: 35%;
+	float: left;
+}
 
+#calendar {
+	position: absolute;
+	left: 38%;
+	top: 10%;
+	margin-right: 10px;
+}
+
+#companyForm {
+	height: 50px;
+	padding: 10px;
+}
+
+#submit-action {
+position: relative;
+top: 65%;
+left: 30%;
+}
+
+</style>
 </head>
-
 <body>
+	<!-- select company to make an appointment with -->
 	<form action='appointment' method='get' id='companyForm'>
-		<select name='business'>
-		    {{#each companies}}
-		    <option value='{{this}}'>{{this}}</option>
-		    {{/each}}
-		</select>
-		<input type='submit' value='select business'>
+	    <label for='availBusinesses'>Select a Business</label>
+            <select id='availBusinesses' name='business'>
+                {{#each companies}}
+		<option value='{{this}}'>{{this}}</option>
+		{{/each}}
+	    </select>
+	    <input type='text' placeholder='Preferred date' name='preferedDate' id='preferedDate' readOnly>
+	    <div id='preferedDate' style='display:none'></div><br>
+	    <input type='submit' value='select'>
 	</form>
+
+	<div id='availHrs'>{{hrs}}</div>
+	<div id='dfs'>{{title}}</div>
 	
-	<!-- render form if response contains the necessary data -->
+	<!-- render calendar and company forms if response contains the necessary data -->
+	{{#if formData}}
 	    
-	    {{#if formData}}
-	        <form action='forms' method='post' id='appointment'>
-	            <input type='hidden' name='formData' id='formData'>
-		    <input type='submit' value='Make appointment' id='submit-action'>
-                </form>
-    
-                <!--is populated with json string that represent the persisted form for the
-		company-->
-                <p id='formFields' hidden>{{formData}}</p>
-            {{/if}}
+	    <div id='leftForm'>
+	        <form action='appointment' method='post' id='appointment'></form>
+	        <input type='hidden' value={{businessName}} name='businessId' form='appointment'>
+	        <select id='appointmentList' name='appointmentType'></select>
+    	        <input type='submit' value='Make appointment' id='submit-action' form='appointment'>
+	    </div>
+
+	    <!-- contains json string that represents the persisted form for the selected company -->
+            <p id='formFields' hidden>{{formData}}</p>
+	    <p id='calendarOptions' hidden>{{calendarOptions}}</p>
+	    <p id='appointmentTypes' hidden>{{appointmentTypes}}</p>
+
+        {{/if}}
+
+
 
 
 	<script type='text/javascript'>
+	   
+	    $( "#preferedDate" ).datepicker({maxDate: '+2m'});
 
-	    var formOpts = {
+            /*var appointmentTypes = JSON.parse(document.getElementById('appointmentTypes').innerHTML);
+	    for(let type in appointmentTypes) {
+		var option = "<option value='" + type + "" + appointmentTypes[type] + 
+			     "'>" + type + " " + appointmentTypes[type] + "hr(s)</option>";
+	        $('#appointmentList').append(option);
+	    }*/
+
+	    console.log(document.getElementById('availHrs').innerHTML);
+            var formOpts = {
 		formData: document.getElementById('formFields').innerHTML,
-		dataType: 'json',
+		dataType: 'json'
 	    }
+
+	    console.log();
+
+	    // renders the company's form with the specified options
 	    $(document.getElementById('appointment')).formRender(formOpts);
+
+            	    
 	</script>
  
 

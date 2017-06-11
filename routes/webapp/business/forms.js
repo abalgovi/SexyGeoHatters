@@ -49,19 +49,66 @@ exports.get = function(req,res,next){
     // grab customized form from db if any
     formsCollection.findOne({businessId: businessID}).then((doc) => {
 	if(doc != null && doc.businessId != null) responseParams.formData = doc.formParams;
-	console.log(doc);
-	console.log(responseParams.formData);
-        res.render('business/forms', responseParams);
+    }).then(() => {
+	
+	var operationCollection = req.db.get('operationInfo');
+	operationCollection.findOne({businessId: businessID},['-_id','-businessId']).then((doc) => {
+	  if(doc) {
+	      for(let key in doc) {
+	          if(key == 'businessHours') {
+		      for(let k in doc[key]) doc[key][k] = JSON.stringify(doc[key][k])
+		      responseParams[key] = doc[key].toString();
+		  }
+		  else if(key == 'appointments') responseParams[key] = JSON.stringify(doc[key]);
+		  else responseParams[key] = doc[key];
+	      }
+	  }
+          res.render('business/forms', responseParams);
+	});
+
     });
 
 }
 
 exports.post = function(req,res,next) {
 
-    var formsCollection = req.db.get('forms');
+
     var businessID = req.user[0].business;
     var formJson = req.body.formData;
 
+    // business Info
+    if(!formJson) {
+        var operationCollection = req.db.get('operationInfo');
+	var operInfo = {
+                         businessHours: [{dow: JSON.stringify(req.body.businessDays)}],
+			 minTime: req.body.startTime,
+			 maxTime: req.body.endTime,
+		         businessId: businessID,
+			 appointments: {}
+	               };
+	
+	console.log(req.body);
+
+	// for each appointment type save it and its duration
+	for(let appts in req.body) {
+	    if(appts.includes('appt') && !appts.includes('Dur')) {
+	       var dur = 'appt' + appts.substring(4,appts.length - 4) + 'Dur';
+	       if(appts.includes('Name')) operInfo.appointments[req.body[appts]] = req.body[dur];
+	    }
+	}
+  
+        // if info already exists update otherwise insert it	
+	operationCollection.findOneAndUpdate({businessId: operInfo.businessId},operInfo).then((doc) => {
+	    if(!doc.value && doc.lastErrorObject) operationCollection.insert(operInfo).then((doc) => {});
+	});
+
+	res.redirect('/forms');
+	return;
+    }
+    
+    
+    // handle newly customized form
+    var formsCollection = req.db.get('forms');
     if(!formJson || formJson.length <= 2) {
         res.redirect('/forms?formEdit=empty');
 	return;
