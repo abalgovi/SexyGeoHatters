@@ -47,42 +47,47 @@ tr:nth-child(even) {
   margin-top:20px;
 }
 </style>
+<script>
+	function myFunction() {
+    	document.getElementById("myTable").deleteRow(this);
+    }
+</script>	
 <div>
-    <table>
+    <table id="myTable">
   <tr>
     <td>9:00 AM</td>
     <td>Bob Myers</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
   <tr>
   	<td>9:30 AM</td>
     <td>Eric Rogers</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
   <tr>
   	<td>10:00 AM</td>
     <td>Tom Turner</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
   <tr>
   	<td>11:00 AM</td>
     <td>Freddie Erickson</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
   <tr>
   	<td>11:30 AM</td>
     <td>Thomas Powell</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
   <tr>
   	<td>1:00 PM</td>
     <td>Peter Pickles</td>
-    <td><input type="button" value="Check In"></td>
+    <td><input type="button" value="Check In" onclick="myFunction()"></td>
     <td><input type="button" value="Cancel Appointment"></td>
   </tr>
 </table>
