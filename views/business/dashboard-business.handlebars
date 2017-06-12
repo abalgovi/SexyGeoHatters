@@ -5,6 +5,14 @@
 </section>
 
 <section class="content">
+    <link rel='stylesheet' href='/plugins/fullCalendar/fullcalendar.min.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src='/plugins/fullCalendar/moment.min.js'></script>
+    <script src='/plugins/fullCalendar/fullcalendar.min.js'></script>`
+</section>
+
+<section class="content">
     {{#if message}}
         <div class="alert alert-danger">{{message}}</div>
     {{/if}}
@@ -46,12 +54,21 @@ tr:nth-child(even) {
 #yo{
   margin-top:20px;
 }
+
+
 </style>
+
 <script>
 	function myFunction() {
     	document.getElementById("myTable").deleteRow(this);
     }
 </script>	
+
+
+<div id='calendar'></div>
+
+
+
 <div>
     <table id="myTable">
   <tr>
@@ -153,3 +170,18 @@ tr:nth-child(even) {
 </table>
 </div>
 </section>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+    defaultView: 'timelineMonth',
+        weekends: false
+    });
+
+});
+</script>
+
