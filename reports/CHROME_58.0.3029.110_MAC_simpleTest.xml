@@ -5,55 +5,58 @@
 
   <testsuite name="simpleTest"
     errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
-    tests="7" time="5.640" timestamp="Sun, 11 Jun 2017 05:15:37 GMT">
+    tests="7" time="7.702" timestamp="Wed, 14 Jun 2017 18:17:52 GMT">
   
-    <testcase name="Enqué - Body Load Home" classname="simpleTest" time="3.240" assertions="2">
+    <testcase name="Enqué - Home Page Load" classname="simpleTest" time="5.521" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Get Title Home" classname="simpleTest" time="0.02900" assertions="2">
+    <testcase name="Enqué - Get Home Title" classname="simpleTest" time="0.01700" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Body Load Register" classname="simpleTest" time="0.6060" assertions="2">
+    <testcase name="Enqué - Login Page Load" classname="simpleTest" time="0.5230" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Get Title Register" classname="simpleTest" time="0.01100" assertions="2">
+    <testcase name="Enqué - Get Login Title" classname="simpleTest" time="0.01000" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Body Load Login" classname="simpleTest" time="0.5680" assertions="2">
+    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.174" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Register Page Load" classname="simpleTest" time="0.4470" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Get Title Login" classname="simpleTest" time="0.01400" assertions="2">
+    <testcase name="Enqué - Get Register Title" classname="simpleTest" time="0.01000" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.172" assertions="1">
 
-    
-    </testcase>
   
+
   
   </testsuite>
 </testsuites>

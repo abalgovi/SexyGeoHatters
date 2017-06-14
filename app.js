@@ -136,7 +136,7 @@ app.use(function(req, res, next) {
 
 
 // Set Webapp Routes
-//app.use('/office', require('./routes/webapp/checkin'));
+app.use('/office', require('./routes/webapp/checkin'));
 app.use('/', businessRoutes);
 
 
@@ -149,6 +149,7 @@ app.use('/api/m/mobiletoken', mobileToken);
 app.use('/api/m/business', business);
 app.use('/api/m/example', require('./routes/api/example'));
 app.use('/api', require('./routes/webapi'));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -184,6 +185,9 @@ app.use(function (err, req, res) {
         error: {}
     });
 });
+
+
+
 
 
 exports = module.exports = app;

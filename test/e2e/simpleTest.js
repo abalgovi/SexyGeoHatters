@@ -3,7 +3,7 @@ var config = require('../../nightwatch.conf.BASIC.js');
 module.exports = {
 
   // Check if website is loading properly
-  'Enqué - Body Load Home': function(browser) {
+  'Enqué - Home Page Load': function(browser) {
     browser
     	  .url('https://sexygeohatters-testing.herokuapp.com')
       	.waitForElementVisible('body', 5000)
@@ -11,33 +11,16 @@ module.exports = {
       	.waitForElementVisible('body', 5000)
   },
 
-  // Get if title of the website is correct
-  'Enqué - Get Title Home': function(browser) {
+  // Get if title of the website is correct Home
+  'Enqué - Get Home Title': function(browser) {
    	browser.getTitle(function(title) {
     	this.assert.equal(typeof title, 'string');
      	this.assert.equal(title, 'Home');
    	})
   }, 
 
-  // Check if website is loading properly
-  'Enqué - Body Load Register': function(browser) {
-    browser
-        .url('https://sexygeohatters-testing.herokuapp.com/register')
-        .waitForElementVisible('body', 5000)
-        .click('#navbar-collapse-1')
-        .waitForElementVisible('body', 5000)
-  },
-
-  // Get if title of the website is correct
-  'Enqué - Get Title Register': function(browser) {
-    browser.getTitle(function(title) {
-      this.assert.equal(typeof title, 'string');
-      this.assert.equal(title, 'Register');
-    })
-  }, 
-
-  // Check if website is loading properly
-  'Enqué - Body Load Login': function(browser) {
+  // Direct to login
+  'Enqué - Login Page Load': function(browser) {
     browser
         .url('https://sexygeohatters-testing.herokuapp.com/login')
         .waitForElementVisible('body', 5000)
@@ -45,8 +28,8 @@ module.exports = {
         .waitForElementVisible('body', 5000)
   },
 
-  // Get if title of the website is correct
-  'Enqué - Get Title Login': function(browser) {
+  // Get if title of the website is correct Login
+  'Enqué - Get Login Title': function(browser) {
     browser.getTitle(function(title) {
       this.assert.equal(typeof title, 'string');
       this.assert.equal(title, 'Login');
@@ -58,13 +41,25 @@ module.exports = {
     browser
       .url('https://sexygeohatters-testing.herokuapp.com/login')
       .waitForElementVisible('body', 5000)
-      .setValue('input[name="email"]', 'tester@email.com')
-      .setValue('input[name="password"]', ['112testerucsd', browser.Keys.ENTER])
+      .setValue('input[name="email"]', 'sexygeo@email.com')
+      .setValue('input[name="password"]', ['HelloWorld11', browser.Keys.ENTER])
   },
 
-  
-//   // Inside dashboard check
-//   'Enqué - Inside Dashboard page': function(browser) {
-//      browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
-//   }
+  // Direct to Register
+  'Enqué - Register Page Load': function(browser) {
+    browser
+        .url('https://sexygeohatters-testing.herokuapp.com/register')
+        .waitForElementVisible('body', 5000)
+        .click('#navbar-collapse-1')
+        .waitForElementVisible('body', 5000)
+  },
+
+  // Get if title of the website is correct Register
+  'Enqué - Get Register Title': function(browser) {
+    browser.getTitle(function(title) {
+      this.assert.equal(typeof title, 'string');
+      this.assert.equal(title, 'Register');
+    })
+  }, 
+
 };

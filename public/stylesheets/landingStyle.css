@@ -14,7 +14,6 @@ hr {
 h1 {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     color: #092543;
-    font-weight: 700;
 
 }
 
@@ -49,7 +48,7 @@ h4 {
 }
 
 section{
-    padding: 50px 0;
+    padding: 75px 0;
 }
 
 #custom_hr{
@@ -123,8 +122,8 @@ fieldset[disabled] .btn-default.active {
     background-color: #222222;
 }
 .btn-primary {
-    color: #ffffff;
-    background-color: #071C33;
+    color: #071C33;
+    background-color: white;
     border-color: #ffae00;
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
@@ -181,7 +180,7 @@ fieldset[disabled] .btn-primary.active {
     padding: 15px 30px;
 }
 ::-moz-selection {
-    color: white;
+    color: black;
     text-shadow: none;
     background: #222222;
 }
@@ -221,7 +220,7 @@ footer .footer-col {
 }
 footer .footer-below {
     padding: 25px 0;
-    background-color: #071C33;
+    background-color: white;
     border-top-color: #ffae00;
 }
 
@@ -255,7 +254,7 @@ footer a{
 }
 
 .navbar-default {
-    background-color: #071C33;
+    background-color:white;
     border-color: #071C33;
     font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
     font-weight: 700;
@@ -279,7 +278,7 @@ footer a{
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #ffae00;
-    background-color: #071C33;
+    background-color: yellow;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #ffffff;
@@ -360,7 +359,7 @@ header {
     background-size: cover;
     -o-background-size: cover;
     background-position: center;
-    background-image: url('../images/doctors-office-waiting-room-17dwxkz.jpg');
+    background-image: url('https://www.resolutets.com/wp-content/uploads/2013/06/Dark-Office-Background.png');
     text-align: center;
     color: white;
 }
@@ -371,7 +370,6 @@ header .header-content {
     width: 100%;
 }
 header .header-content .header-content-inner h1 {
-    font-weight: 700;
     text-transform: uppercase;
     margin-top: 0;
     color: #FFF;
@@ -427,7 +425,61 @@ header .header-content .header-content-inner p {
     width: 70%;
 }
 
-.arrow-down {
+.integrations-list{
+    list-style: none;
+    padding: 0;
+    margin: 0 -10px 30px;
+}
+
+.integrations-list li.new{
+    position: relative;
+}
+.integrations-list li {
+    width:300px;
+    padding:20px;
+    background: white;
+    margin: 0 10px 10px;
+    float: left;
+    margin-left: -2px;
+}
+
+.integrations-list .img-holder img {
+    max-width: 100%;
+    height: auto;
+    border-style: none;
+    vertical-align: middle;
+    border: 0;
+    margin-bottom: 25px;
+    width: 150px;
+}
+
+.integrations-list .text{
+    float: left;
+    width: 250px;
+    margin-left: 10px;
+    text-align:center;
+}
+
+.integrations-list .name{
+    font-weight: 500;
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.integrations-list .content{
+    margin-bottom: 10px;
+    height: 120px;
+    overflow: hidden;
+    font-size: 14px;
+}
+/*.title{
+    text-align:center;
+    font-size: 36px;
+    line-height: 60px;
+    margin: 0 0 30px;
+    font-weight: 300;
+}
+*/.arrow-down {
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
