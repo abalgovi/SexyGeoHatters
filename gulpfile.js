@@ -128,26 +128,6 @@ gulp.task('nodemon', ['lint'], function (cb) {
     });
 });
 
-/*gulp.task('mongostart', function() {
-    child_process.exec('mongod --dbpath db', function(err, stdout, stderr) {
-        if(err) {
-            console.log(err.stack);
-            console.log("Error code: " + err.code);
-            console.log("Signal received: " + err.signal);
-        }
-    });
-});
-
-gulp.task('mongoend', function() {
-
-    child_process.exec("mongo --eval 'db.shutdownServer()' admin", function(err, stdout, stderr) {
-        if(err) {
-            console.log(err.stack);
-            console.log("Error code: " + err.code);
-            console.log("Signal received: " + err.signal);
-        }
-    });
-});*/
 
 gulp.task('browser-sync', ['nodemon'/*, 'mongostart', 'watch-check'*/], function () {
 
@@ -192,7 +172,4 @@ gulp.task('mongorestore', function() {
 
 
 gulp.task('default', ['browser-sync','jsdocs','lint']);
-
-
-
 

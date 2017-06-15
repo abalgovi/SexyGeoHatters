@@ -9,7 +9,7 @@ exports.get = function(req,res) {
 
 	    var appointmentCollection = req.db.get('appointments'), formsCollection = req.db.get('forms');
 
-	    if(!req.query.date && !req.query.apptType) {
+	    if(!req.query.date) {
                 getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
 		   console.log(hours);
 	           res.writeHead(200,{'Content-Type': 'application/json'});

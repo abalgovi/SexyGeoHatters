@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
+// var sendgrid  = require('sendgrid')('robobetty', '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');
 var sendgrid = require('sendgrid')('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');
 var ObjectId = require('mongodb').ObjectID;
 
@@ -25,8 +26,8 @@ exports.get = function(req,res,next){
     var name = req.body.inputName;
     var inputEmail = req.body.inputEmail;
     var inputPhone = req.body.inputPhone;
-    
-    // construct response parameters for forms.handlebars to use
+
+// construct response parameters for forms.handlebars to use
     var responseParams =  {
         title: 'Form Editor',
         isOwner: req.user[0].admin,

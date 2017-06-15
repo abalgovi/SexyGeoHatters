@@ -186,8 +186,6 @@ app.use(function (err, req, res) {
     });
 });
 
-
-
-
+app.use(express.static(path.join(__dirname, 'plugins')));
 
 exports = module.exports = app;
