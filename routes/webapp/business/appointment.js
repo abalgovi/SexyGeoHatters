@@ -21,7 +21,9 @@ exports.get = function(req,res) {
 	      businessCollection.findOne({'companyName': companyName}, {'_id': 1}).then((company) => {
 		  formsCollection.findOne({'businessId': company['_id']}).then((form) => {
 		      res.writeHead(200,{'Content-Type': 'application/json'});
-	              res.end(JSON.stringify({formContent: form['formParams'], business: companyName}));
+	              res.end(JSON.stringify({ formContent: form['formParams'],
+					       business: companyName,
+					       date: req.query.date }));
 		  });
 	      });
 
@@ -154,9 +156,6 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 
 
 }
-
-
-
 
 
 exports.post = function(req,res) {
