@@ -9,21 +9,25 @@ exports.get = function(req,res) {
 
 	    var appointmentCollection = req.db.get('appointments'), formsCollection = req.db.get('forms');
 
-	    if(!req.query.date) {
+	    if(!req.query.date && !req.query.apptType) {
                 getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
 		   console.log(hours);
 	           res.writeHead(200,{'Content-Type': 'application/json'});
 	           res.end(JSON.stringify({hrs: hours, business: companyName}));
 	        });
+
 	    } else {
               
 	      // fetch the form to display
 	      businessCollection.findOne({'companyName': companyName}, {'_id': 1}).then((company) => {
 		  formsCollection.findOne({'businessId': company['_id']}).then((form) => {
 		      res.writeHead(200,{'Content-Type': 'application/json'});
+		      var dateTime = new Date(req.query.date);
+		      dateTime.setHours(req.query.hr);
 	              res.end(JSON.stringify({ formContent: form['formParams'],
 					       business: companyName,
-					       date: req.query.date }));
+					       businessId: company['_id'],
+					       date: dateTime.toString() }));
 		  });
 	      });
 
@@ -168,18 +172,23 @@ exports.post = function(req,res) {
 	// store all form values
 	for(let key in formContents) apptInfo[key] = formContents[key];
 	
-	apptInfo['startTime'] = new Date();
-	apptInfo['endTime'] = new Date();
+	// for now just set it to a default value will allow users to select appt type later
+	apptInfo['title'] = 'Consultation';
+	apptInfo['duration'] = 1;
+	
+	apptInfo['startTime'] = new Date(formContents['appointment-date-time']);
+	apptInfo['startTime'].setHours(apptInfo['startTime'].getHours() - 7);
+	apptInfo['endTime'] = new Date(formContents['appointment-date-time']);
 	apptInfo['endTime'].setHours( parseInt(apptInfo['startTime'].getHours()) + 
 		               	      parseInt(apptInfo['duration']));
-        
-	var appointments = req.db.get('appointments');
+
+	var appointments = req.db.get('appointments'), busCollection = req.db.get('businesses');
 	appointments.insert(apptInfo).then((docs) => {	
-		res.redirect('appointmentConfirmation',{time: dateTime});
+            res.redirect('/');
 	}).catch((err) => {
 	    console.log(err);
 	    res.redirect('/');
 	});
-
+	
 }
 

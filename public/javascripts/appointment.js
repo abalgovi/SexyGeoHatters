@@ -36,6 +36,10 @@ function renderForm(json) {
 	                                                   dataType: 'json' });
     
     overlay.style.display = "block";
+    document.getElementById('formHeader').innerHTML = json['business'];
+    var apptDate = document.getElementById('appointment-date-time');
+    apptDate.readOnly = true;
+    apptDate.value = json['date'];
     
 } 
 
@@ -45,11 +49,22 @@ function getForm(url) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
+	    
 	    let resJson = JSON.parse(this.responseText);
 	    renderForm(resJson);
+	    
+	    var input = document.createElement('input'), anInput = document.createElement('input');
+	    input.value = resJson['businessId']; input.name = 'businessId';
+	    input.type = 'text'; input.hidden = true;
+	    document.getElementById('busForm').appendChild(input);
+
+	    anInput.value = resJson['business']; anInput.name = 'company';
+	    anInput.type = 'text'; anInput.hidden = true;
+	    document.getElementById('busForm').appendChild(anInput);
+
 	}
     };
-			
+		
     xhttp.open("GET",url,true);
     xhttp.send();
 }
