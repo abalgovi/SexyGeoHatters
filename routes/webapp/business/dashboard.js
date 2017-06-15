@@ -18,15 +18,28 @@ exports.get = function (req, res) {
 			dashboard: "active"
 		});
 	} else if( isOwner ) {
-		res.render('business/dashboard-business', {
-			title: 'Express',
-			eid: employeeId,
-			employeeName: employeename,
-			message: req.flash("permission"),
-			isOwner: isOwner,
-			businessId: req.user[0].business,
-			dashboard: "active"
+		var apptCollections = req.db.get("appointments");
+		apptCollections.find({businessId: req.user[0].business, startTime: {'$lte': new Date()}}).then((appts) => {
+			if (appts.length > 0) {
+				var events = [];
+				for(let appt in appts){
+					events.push({title: appts[appt].title, start: appts[appt].startTime, end: appts[appt].endTime});
+				}
+			}
+
+			res.render('business/dashboard-business', {
+				title: 'Express',
+				eid: employeeId,
+				employeeName: employeename,
+				message: req.flash("permission"),
+				isOwner: isOwner,
+				businessId: req.user[0].business,
+				dashboard: "active",
+				events: JSON.stringify(events)
+		    });
+
 		});
+		
 	} else {
 
 		var db = req.db;

@@ -4,7 +4,13 @@
     <h1 class="pull-right" id="currentDate"></h1>
 </section>
 
+
+
 <section class="content">
+    <link rel='stylesheet' href='../../plugins/fullcalendar/lib/fullcalendar.min.css' />
+    <script src='../../plugins/fullcalendar/lib/moment.min.js'></script>
+    <script src='../../plugins/fullcalendar/lib/fullcalendar.min.js'></script>
+
     {{#if message}}
         <div class="alert alert-danger">{{message}}</div>
     {{/if}}
@@ -13,20 +19,23 @@
     <div>
       <td><input type="button" value="Schedule New Appointment"></td>
     </div>
+    <div id='events' hidden> {{events}} </div> 
     <h3>Today's Appointments</h3>
+    <div id='calendar'></div>
+
 </section>
 
-<section class="content">
-    <link rel='stylesheet' href='/plugins/fullcalendar/fullcalendar.min.css' />
-    <script src='/plugins/fullcalendar/lib/jquery.min.js'></script>
-    <script src='/plugins/fullcalendar/lib/moment.min.js'></script>
-    <script src='/plugins/fullcalendar/fullcalendar.js'></script>
-</section>
-
-<div id='calendar'></div>
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+        // Parsed events to JSON
+        var events = eval("(" + document.getElementById('events').innerHTML + ")");
+        var parsed_events = [];
+        for(var i = 0; i < events.length; i++) {
+            var json = JSON.stringify(events[i])
+            parsed_events.push(JSON.parse(json));
+        }
 
         // Initalize Calendar
         var date = new Date();
@@ -36,40 +45,13 @@
 
         $('#calendar').fullCalendar({
             default: true,
-            events: [
-                {
-                    title: 'SexyGeo Meeting #1',
-                    start: new Date(y, m, 1, 9, 00),
-                    end: new Date(y, m, 1, 10, 00),
-                    allDay: false
-                },
-                {
-                    title: 'Meeting #1',
-                    start: new Date(y, m, 2, 16, 00),
-                    allDay: false
-                },
-                {
-                    title: 'Meeting #3',
-                    start: new Date(y, m, 4, 16, 00),
-                    allDay: false
-                },
-                {
-                    title: 'SexyGeo Meeting',
-                    start: new Date(y, m, 10, 18, 00),
-                    allDay: false
-                },
-                {
-                    title: 'SexyGeo Meeting - 2',
-                    start: new Date(y, m, 8, 14, 00),
-                    allDay: false
-                },{
-                    title: 'SexyGeo Meeting - 3',
-                    start: new Date(y, m, 6, 15, 00),
-                    allDay: false
-                }
-            ],
-            eventColor: '#378006'
+            header: {
+                left: 'today prev, next',
+                center: '',
+                right: 'month, agendaWeek, agendaDay'
+            },
+            events: parsed_events,
+            eventColor: '#FF4500'
         });
     });
 </script>
-
