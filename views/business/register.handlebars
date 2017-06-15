@@ -9,6 +9,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+        <link rel="shortcut icon" href="/images/sgh.png" type="image/x-icon">
+        <link rel="icon" href="/images/sgh.png" type="image/x-icon">
+
         <!--Analytics-->
         <script src='/javascripts/analytics.js'></script>
     </head>
@@ -27,7 +30,7 @@
                         <span class = "icon-bar"></span>
                     </button>
                     <!--No Implementation of navbar-brand & page-scroll-->
-                    <a class = "navbar-brand page-scroll" href="/">Enqué</a>
+                    <a class = "navbar-brand page-scroll" href="/" style="color:#071C33 !important">SAM</a>
                 </div>
                 <!-- No Implementation of page-scroll-->
                 <div class = "collapse navbar-collapse" id="navbar-collapse-1">
@@ -46,12 +49,14 @@
             <div class="header-content col-xs-4">
                 <h2 class="regTitleColor">Create an Account</h2>
                 <form  method="post" action="" enctype="application/x-www-form-urlencoded">
-                    <input class="regis centerForm" type="text" name="companyName" value="{{ companyName }}" placeholder="COMPANY NAME" required>
-                    <input class="regis centerForm" type="text" name="fname" value="{{ fname }}" placeholder="FIRST NAME" required>
-                    <input class="regis centerForm" type="text" name="lname" value="{{ lname }}" placeholder="LAST NAME" required>
-                    <input class="regis centerForm" type="email" name="email" value="{{ email }}" placeholder="EMAIL" required>
-                    <input class="regis centerForm" type="tel" name="phone" value="{{ phone }}" placeholder="PHONE NUMBER" required>
-                    <input class="regis centerForm" type="password" name="password" value="{{ password }}" placeholder="PASSWORD" required>
+                    <input class="regis centerForm" type="text" name="companyName" value="{{ companyName }}" placeholder="Company Name" required>
+                    <input class="regis centerForm" type="text" name="fname" value="{{ fname }}" placeholder="First Name" required>
+                    <input class="regis centerForm" type="text" name="lname" value="{{ lname }}" placeholder="Last Name" required>
+                    <input class="regis centerForm" type="email" name="email" value="{{ email }}" placeholder="youremail@domain.com" required>
+                    <input class="regis centerForm" type="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" name="phone" value="{{ phone }}" 
+                    placeholder="Enter your number as xxx-xxx-xxxx" required>
+                    <input class="regis centerForm" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,17}$" 
+                    name="password" value="{{ password }}" placeholder="8-17 char, at least 1 upper, 1 lower, 1 number " required>
                     <input class="btn btn-primary btn-x2 page-scroll sign1Btn" name="submit" type="submit" onclick="sign1Click()" value="Sign Up">
                 </form>
             </div>
@@ -60,7 +65,7 @@
             <div class="footer-below">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" style="color:#071C33 !important">
                             Copyright &copy; SexyGeoHatters All Rights Reserved.
                         </div>
                     </div>

@@ -12,8 +12,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
         <!--Icon -->
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/images/sgh.png" type="image/x-icon">
+        <link rel="icon" href="/images/sgh.png" type="image/x-icon">
 
         <!--JQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -37,37 +37,37 @@
                        <span class = "icon-bar"></span>
                    </button>
                    <!--No Implementation of navbar-brand & page-scroll-->
-                   <a class = "navbar-brand page-scroll" href="#top-page">Enqué</a>
+                   <a class = "navbar-brand page-scroll" href="#top-page" style="color:#071C33 !important">SAM</a>
                </div>
                <!-- No Implementation of page-scroll-->
                <div class = "collapse navbar-collapse" id="navbar-collapse-1">
                    <ul class="nav navbar-nav navbar-right navbar-landing-padding">
                        <li>
-                           <a class="page-scroll" href="#overview">Overview</a>
+                           <a class="page-scroll" href="#overview" style="color:#071C33 !important">Overview</a>
                        </li>
 
                        <li>
-                           <a class="page-scroll" href="#testimonial_blk">Testimonial</a>
+                           <a class="page-scroll" href="#services" style="color:#071C33 !important">Services</a>
                        </li>
 
-                       <li>
-                           <a class="page-scroll" href="#pricing">Pricing</a>
+                        <li>
+                           <a class="page-scroll" href="#integration" style="color:#071C33 !important">Integration</a>
                        </li>
 
-                       <li><a class="page-scroll" href="#contact_us">Contact Us</a></li>
-		
-		       <li>
+		        <li>
                         <a href="/appointment" class="page-scroll" id="appointment">Make an
-			appointment</a>
+			appointment</a></li>
+                       <li>
+                           <a class="page-scroll" href="#pricing" style="color:#071C33 !important">Pricing</a>
                        </li>
 
                        <li>
                            <!--<button type = "button" class = "btn btn-default navbar-btn">Navbar Button</button>-->
-                           <a href="/login" class="page-scroll" id="loginButton">Log In</a>
+                           <a href="/login" class="page-scroll" id="loginButton" style="color:#071C33 !important">Log In</a>
                            <!--<a href="/login" class="btn custom-button page-scroll navbar-btn" id="login-btn-navbar">Log In</a>-->
                        </li>
                        <li>
-                        <a href="/register" class="page-scroll" id="registerButton">Register</a>
+                        <a href="/register" class="page-scroll" id="loginButton" style="color:#071C33 !important">Register</a>
                        </li>
 		       
                    </ul>
@@ -78,16 +78,18 @@
         <header>
             <div class="header-content">
                 <div class="header-content-inner">
-                    <h1>The Old Rules Of Waiting Are Over.</h1>
+                    <h1 style="white-space:pre; font-size:36px; margin-left:-200px;">
+                        This is SAM, how can I help you? 
+                        Stylized Appointment Management</h1>
                     <hr>
-                    <p style="background-color:#092543; border-radius:1">Let us help you revolutionize your patient waiting experience with effortless check-in, form management, arrival notification, and appointment integration for your office.</p>
+                    <p style="text-align:left">Customize your business and let SAM take care of the rest. Seamlessly manage appointments, send out reminders, and check-in patrons. </p>
                     <a href="/register" class="btn btn-primary btn-xl page-scroll tryBtn" onclick="tryClick()">Try It Today</a>
                 </div>
             </div>
         </header>
 
         <!-- Overview -->
-        <section id="overview">
+        <section id="overview" height= 275>
             <div class = "container">
 
                 <div class="row">
@@ -104,7 +106,7 @@
                         <i class="fa fa-pencil-square-o fa-5x" style="color:#222222"></i>
                         <br><br>
                         <p class="overviewColor align-overview-mobile">
-                            Quickly and easily sign up an account with Enque.
+                            Quickly and easily sign up an account with SAM.
                         </p>
                     </div>
 
@@ -118,20 +120,20 @@
                     </div>
 
                     <div class="col-sm-3 text-center">
-                        <h4>Deploy Onto Device </h4>
+                        <h4>Make Appointments </h4>
                         <i class="fa fa-tablet fa-5x" style="color:#222222"></i>
                         <br><br>
                         <p class="overviewColor align-overview-mobile">
-                            Deploy your form on any device with a browser. Tablets and mobile devices are also supported.
+                            Your customers make appointments using your customized forms and get notified about their upcoming appointments.
                         </p>
                     </div>
 
                     <div class="col-sm-3 text-center">
-                        <h4>Manage Your Customers </h4>
+                        <h4>Check-In </h4>
                         <i class="fa fa-users fa-5x" style="color: #222222;"></i>
                         <br><br>
                         <p class="overviewColor align-overview-mobile">
-                            Our system will begin assisting you in keeping track of appointments and help manage your customers.
+                            Your customers seamlessly check-in for their appointments on services they use on a daily basis.
                         </p>
                     </div>
 
@@ -139,13 +141,13 @@
             </div>
         </section>
 
-        <!-- Testimonials-->
-        <section id="testimonial_blk" style="background-color:#092543">
+        <!-- Servies-->
+        <section id="services" style="background-color:#092543">
             <div class="container">
 
                 <div class = "row rowPadding">
                     <div class="col-lg-12 text-center">
-                        <h1 id="h1Custom">Testimonials</h1>
+                        <h1 id="h1Custom">Services</h1>
                         <hr id="custom_hr2">
                     </div>
                 </div>
@@ -161,25 +163,41 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="http://i25.photobucket.com/albums/c97/evilsmith/review1_zpsyjcrug77.jpg" alt="Review1">
+                        <div class="item active" style="text-align:center">
+                                <h2 style="color:deepskyblue !important;">Appointment Management</h2>
+                                <div style="font-size: 20px; height: 275px; color:white; white-space:pre; margin-bottom:-10px;">- Manage your businesses appointments through our web interface 
+- Customize your appointment sign up forms  
+- View your daily schedule and manually check-in customers
+                                </div>
                         </div>
 
-                        <div class="item">
-                            <img src="http://i25.photobucket.com/albums/c97/evilsmith/review4_zpsxjfaxaed.jpg" alt="Review2">
+                        <div class="item" style="text-align:center">
+                            
+                                <h2 style="font: Raleway, sans-serif; color:deepskyblue !important; margin-bottom:-10px;">Reminders</h2>
+                                <p style="font-size: 20px; height: 275px; color:white; white-space:pre; position:relative; left:-50px;">
+                                - Automatically send out appointment reminders, no more mailers and phone calls!
+                                - Patrons receive e-mail reminders when they sign up for appointments
+                                - SMS and Facebook support coming soon!
+                                </p>
+                            
                         </div>
 
-                        <div class="item">
-                            <img src="http://i25.photobucket.com/albums/c97/evilsmith/review3_zpseo2hjc7o.jpg" alt="Review3">
+                        <div class="item" style="text-align:center">
+                                <h2 style="font: Raleway, sans-serif; color:deepskyblue !important; margin-left: 50px; margin-bottom:-10px;style="text-align:center"">Check In Anytime, Anywhere!</h2>
+                                <p style="font-size: 20px; height: 275px; color:white; white-space:pre; margin-left:-80px">
+                                - Check-in using our webapp with ease, confidence, and comfort!
+                                - Check-in through SMS, Facebook Messenger, or Slack 
+                                </p>
                         </div>
 
-                        <div class="item">
-                            <img src="http://i25.photobucket.com/albums/c97/evilsmith/review2_zpsdhgb9ulw.jpg" alt="Review4">
-                        </div>
-
-                        <div class="item">
-                            <img src="http://i25.photobucket.com/albums/c97/evilsmith/review3_zpseo2hjc7o.jpg" alt="Review3">
-                        </div>
+                        <div class="item" style="text-align:center">
+                                <h2 style="text-align:center; color:deepskyblue !important; margin-bottom:-10px">Virtual Assistant</h2>
+                                <p style="font-size: 20px; height: 275px; color:white; white-space:pre; text-align:center; margin-left: -70px">
+                                - Patrons can talk to SAM and interact with it like a real receptionist
+                                - SAM interprets natural English phrases to make appointments without fussing with format
+                                - Check-in, set appointments, and cancel them at your convenience
+                            </p>
+                        
                     </div>
 
                     <!-- Controls -->
@@ -193,12 +211,46 @@
             </div>
         </section>
 
+        <section id="integration">
+            <div class="container">
+                <div class="col-lg-12 text-center">
+                    <h1>Integration</h1>
+                    <hr id="custom_hr">
+                    <ul class="integrations-list clearfix" style="margin-left:100px">
+                        <li class="new">
+                            <div class="img-holder"><img src="../images/phone.png"></div>
+                            <div class="text">
+                                <h4 class="name" style="text-align:center">SMS</h4>
+                                <div class="content"> We provide a localized phone number just for SAM. Patrons send text messages to SAM and SAM handles the rest. </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-holder"><img src="../images/slack.png"></div>
+                            <div class="text">
+                                <h4 class="name" style="text-align:center">Slack</h4>
+                                <div class="content"> Patrons add SAM to their Slack channel and message SAM to schedule appointments. Perfect for the business professional! </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-holder"><a href="https://www.facebook.com/SAM-471914736490919/"><img src="../images/fb.png"></a></div>
+                            <div class="text">
+                                <h4 class="name" style="text-align:center">Facebook Messenger</h4>
+                                <div class="content"> Patrons message SAM at their convenience and SAM responds back to their queries in a personalized experience. SAM can schedule appointments for any business and knows all the right questions to ask.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
         <section id="pricing">
             <div class="container">
                 <div class = "row rowPadding">
                     <div class="col-lg-12 text-center">
                         <h1>Pricing</h1>
                         <hr id="custom_hr">
+                        <h3>Pay only for what you use. Change plans at any time.</h3>
                     </div>
                 </div>
             </div>
@@ -211,50 +263,48 @@
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel price panel-green">
                         <div class="panel-heading arrow_box text-center">
-                            <h3>FREE TRIAL</h3>
+                            <h3>Free</h3>
                         </div>
 
                         <!--Pricing-->
                         <div class="panel-body text-center">
-                            <p class="lead" style="font-size:40px"><strong>$0 / month</strong></p>
+                            <p class="lead" style="font-size:20px">Ideal for getting a taste of the beauty and power of SAM. First month is on us!</p>
                         </div>
 
                         <!-- Features -->
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item"><i class="fa fa-check" id="chartCheck"></i>Customize Forms</li>
-                            <li class="list-group-item"><i class="fa fa-times" id="chartX"></i>Unlimited Employees</li>
-                            <li class="list-group-item"><i class="fa fa-times" id="chartX"></i>Unlimited Devices</li>
-                            <li class="list-group-item"><i class="fa fa-times" id="chartX"></i>24/7 support</li>
+                            <li class="list-group-item">Customize Forms</li>
+                            <li class="list-group-item">Limited Employees</li>
+                            <li class="list-group-item">Limited Services</li>
                         </ul>
 
                         <!-- Button (Currently no function) -->
                         <div class="panel-footer">
-                                <button class="btn btn-lg btn-block btn-success sign2Btn" href="/register" onclick="sign2Click()">SIGN UP!</button>
+                                <a class="btn btn-lg btn-block btn-success sign2Btn" href="/register">Start Free Trial!</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel price panel-red">
                         <div class="panel-heading  text-center">
-                            <h3>PREMIUM</h3>
+                            <h3>Ultimate Performance</h3>
                         </div>
 
                         <!--Cost-->
                         <div class="panel-body text-center">
-                            <p class="lead" style="font-size:40px"><strong>$10 / month</strong></p>
+                            <p class="lead" style="font-size:20px">Enhanced performance and scalability for your appointment needs. Price based on business size.</p>
                         </div>
 
                         <!-- Features -->
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item"><i class="fa fa-check" id="chartCheck"></i> Customize Forms</li>
-                            <li class="list-group-item"><i class="fa fa-check" id="chartCheck"></i> Unlimited Employees</li>
-                            <li class="list-group-item"><i class="fa fa-check" id="chartCheck"></i> Unlimited Devices</li>
-                            <li class="list-group-item"><i class="fa fa-check" id="chartCheck"></i> 24/7 Support</li>
+                            <li class="list-group-item">Customize Forms</li>
+                            <li class="list-group-item"> Unlimited Employees</li>
+                            <li class="list-group-item">Unlimited Services</li>
                         </ul>
 
                         <!--Button to purchase (No Function)-->
                         <div class="panel-footer">
-                                <a class="btn btn-lg btn-block btn-danger buyBtn" href="#" onclick="buyClick()">BUY NOW!</a>
+                                <a class="btn btn-lg btn-block btn-danger buyBtn" href="/register">BUY NOW!</a>
                         </div>
                     </div>
                 </div>
@@ -264,84 +314,11 @@
             </div>
         </section>
 
-        <!--Contact Form-->
-        <section id = "contact_us" style="background-color: #071C33">
-            <div class="container">
-                <div class = "row rowPadding">
-                    <div class="col-lg-12 text-center">
-                        <h1 id="h1Custom">Contact Us!</h1>
-                        <hr id="custom_hr2">
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class = "row">
-                    <form class="form-horizontal" action="" method="post"  id="contact_form">
-                        <fieldset>
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Name</label>
-
-                                <div class="col-md-6 inputGroupContainer">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input name="name" placeholder="Name" class="form-control form-color" type="text">
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-
-                                <label class="col-md-3 control-label">E-Mail</label>
-
-                                <div class="col-md-6 inputGroupContainer">
-
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input name="email" placeholder="E-Mail Address" class="form-control form-color"  type="text">
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Text area -->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Message</label>
-                                <div class="col-md-6 inputGroupContainer">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                        <textarea class="form-control form-color" name="message" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Success message -->
-                            <!--
-                            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you as soon as possible.</div>
-                            -->
-                            <!-- Button -->
-
-                            <div class="form-group">
-                                <label class="col-md-8 control-label"></label>
-                                <div class="col-md-4">
-                                    <a href="#" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></a>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </section>
-
         <footer class = "text-center">
-            <div class ="footer-above" style="background-color:white">
+            <div class ="footer-above" style="background-color:#071C33">
                 <div class = "container">
                     <div class = "row">
-                        <div class = "footer-col col-md-4" style="color:#092543">
+                        <div class = "footer-col col-md-6" style="color:white">
                             <h3 id="format_Footer_h3">Contact Information</h3>
                             <p>University of California, San Diego
                                 <br>
@@ -351,27 +328,9 @@
                             </p>
                         </div>
 
-                        <div class = "footer-col col-md-4" style="color:#092543">
-                            <h3 id="format_Footer_h3">Social Media</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class = "footer-col col-md-4" style="color:#092543">
-                            <h3 id="format_Footer_h3">About SexyGeoHatters</h3>
-                            <p>SexyGeoHatters is a development team formed in <a href="http://classes.pint.com/cse112/" style="color:#092543">CSE 112</a> at UC San Diego. </p>
+                        <div class = "footer-col col-md-6" style="color:white">
+                            <h3 id="format_Footer_h3">About SAM</h3>
+                            <p>SAM, or Stylized Appointment Management, is the culmination of three years of work to bring you the ultimate assistant. Built by the SexyGeoHatters, a team of seven students from UC San Diego, SAM will revolutionize your customer experience.</p>
                         </div>
                     </div>
                 </div>
@@ -380,8 +339,8 @@
             <div class="footer-below">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            Copyright &copy; SexyGeoHatters. All Rights Reserved.
+                        <div class="col-lg-12" style="color:#071C33 !important">
+                            Copyright &copy; SexyGeoHatters. All Rights Reserved. View our <a href="/privacy" style="color:#071C33 !important">Privacy Policy</a>. 
                         </div>
                     </div>
                 </div>

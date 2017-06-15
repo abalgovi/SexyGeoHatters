@@ -15,7 +15,7 @@ module.exports = {
   'Enqué - Get Title': function(browser) {
    	browser.getTitle(function(title) {
     	this.assert.equal(typeof title, 'string');
-     	this.assert.equal(title, 'Landing Page');
+     	this.assert.equal(title, 'Home');
    	})
   }, 
 
@@ -28,8 +28,8 @@ module.exports = {
       .setValue('input[name="password"]', ['112testerucsd', browser.Keys.ENTER])
   },
 
-  // Inside dashboard check
-  'Enqué - Inside Dashboard page': function(browser) {
-     browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
-  }
+//   // Inside dashboard check
+//   'Enqué - Inside Dashboard page': function(browser) {
+//      browser.assert.urlEquals('https://sexygeohatters-testing.herokuapp.com/dashboard').end();
+//   }
 };

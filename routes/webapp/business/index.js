@@ -5,6 +5,7 @@ var router = express.Router();
 
 // Define the routes for navigating the dashboard web application
 var landing = require('./landing');
+var privacy = require('./privacy');
 var login = require('./login');
 var accountSettings = require('./accountsettings');
 var register = require('./register');
@@ -37,6 +38,7 @@ module.exports = function (passport) {
     router.post('/businesssetting', isLoggedInBusiness,accountSettings.setCompanyInfo);
 
     router.get('/register', register.get);
+    router.get('/privacy', privacy.get);
     router.get('/forms', isLoggedInBusiness, formbuilder.get);
     router.post('/forms', isLoggedInBusiness, formbuilder.post);
     router.post('/register', passport.authenticate('local-signup', {
