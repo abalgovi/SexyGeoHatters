@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="simpleTest"
+    errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
+    tests="2" time="3.389" timestamp="Tue, 16 May 2017 00:54:19 GMT">
+  
+    <testcase name="Enqué - Body Load" classname="simpleTest" time="3.277" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Get Title" classname="simpleTest" time="0.1120" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

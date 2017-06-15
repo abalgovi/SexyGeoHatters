@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="7">
+
+  <testsuite name="simpleTest"
+    errors="0" failures="0" hostname="" id="" package="simpleTest" skipped="0"
+    tests="7" time="7.702" timestamp="Wed, 14 Jun 2017 18:17:52 GMT">
+  
+    <testcase name="Enqué - Home Page Load" classname="simpleTest" time="5.521" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Get Home Title" classname="simpleTest" time="0.01700" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Login Page Load" classname="simpleTest" time="0.5230" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Get Login Title" classname="simpleTest" time="0.01000" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Valid Login" classname="simpleTest" time="1.174" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Register Page Load" classname="simpleTest" time="0.4470" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Enqué - Get Register Title" classname="simpleTest" time="0.01000" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

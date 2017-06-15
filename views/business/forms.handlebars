@@ -1,202 +1,22 @@
-<!DOCTYPE html>
-<head>
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css" rel = "stylesheet"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
-</head>
+
+
+
 <section class="content-header">
     <h1>Form Editor </h1>
     <div id="txt" class="pull-right"></div>
     <h1 class="pull-right" id="currentDate"></h1>
-    <script type='text/x-handlebars-template'>
-    	
-	{{#if empty}}
-	  <p align='center' id='error'><font size='4pt' color='red'>Customized form must have at least one
-	  field.</font></p>
-        {{else}} 
-	  {{#if success}}<p align='center' id='success'><font size='4pt' color='green'>
-	  Successfully saved your form!<br>Your form as seen by your customers</font></p>
-	  {{/if}}
-       {{/if}}
-    
-     </script>
 </section>
 
 <section class="content">
-
-    <div id="formTabs">
-      <ul>
-        <li><a href="#businessForm">Business Information</a></li>
-        <li><a href="#formGenerator">Form Editor</a></li>
-      </ul>
-
-      <form action='forms' method='post' id='formGenerator'>
-         <input type='hidden' name='formData' id='formData'>
-	 <input type='submit' value='Save Form' id='save-action'>
-         <button type='button' id='clear-action'>Clear Fields</button>
-      </form>
-
-       <form action='forms' method='post' id='businessForm'>
-	 
-	 <label for='businessDays'>Business Hours</label>
-	 <div id='businessDays'>
-	   <input type='hidden' id='businessHours' value={{businessHours}}>
-	 </div>
-
-	 <label for='minMaxhours'>Start and End Hours</label>
-	 <div id='minMaxhours'>
-	   <input type='text' id='startTime' value='{{minTime}}' placeholder='00:00:00' name='startTime'> -
-	   <input type='text' id='endTime' value='{{maxTime}}' placeholder='00:00:00' name='endTime'><br>
-	 </div>
-
-	 <label for='appointmentTypes'>Appointment Types</label>
-	 <div id='appointmentTypes'>
-	   <input type='hidden' id='appts' value='{{appointments}}'>
-	 </div>
-	 
-	 <button type='button' id='addAppt' onclick='appendOptions(this)'>Add Appointment Type</button>
-	 <br><input type='submit' value='Save Info'>
-
-       </form>
-     </div>
-
-    
-    <!--is populated with json string that represent the persisted form for the company -->
-    <p id='formFields' hidden>{{formData}}</p>
-    <p id='businessForms' hidden>{{businessForm}}</p>
-
-        
-    <script type='text/javascript'>
-	jQuery(function($) {
-
-	  // options for form -- more info at http://formbuilder.readthedocs.io/
-	  var options = { showActionButtons: false,
-	  		  defaultFields: [{
-        			className: "form-control",
-        			label: "Full Name",
-       				placeholder: "Enter your full name",
-       				name: "client-name",
-        			required: true,
-        			type: "text" },
-				{
-			   	className: "form-control",
-				label: "Appointment Date and Time",
-				placeholder: "Your selected appointment time",
-				name: 'appointment-date-time',
-				required: true,
-				type: "text" },
-				{
-				className: "form-control",
-				label: "Cell Number",
-				placeholder: "(###) ### ####",
-				name: "client-phone",
-				required: true,
-				type: "text"
-				}
-			  ]
-
-	  };
-	  
-	  if(document.getElementById('formFields').innerHTML[0] == '[') {
-	      options.formData = document.getElementById('formFields').innerHTML;
-	  }
-	  
-	  var formbuilder = $(document.getElementById('formGenerator')).formBuilder(options);
-	  
-	  // if form changed and has content, then submit
-	  document.getElementById('save-action').addEventListener('click', function() {
-	     console.log(formbuilder.actions.getData('json'));
-	     document.getElementById('formData').value = formbuilder.actions.getData('json');
-	  });
-
-	  // if clear button is clicked, clear fields
-	  document.getElementById('clear-action').onclick = function() {
-	     formbuilder.actions.clearFields();
-	  };
-
-	  // tabulate the two forms using jquery ui tabs
-          $( "#formTabs" ).tabs({hide: 'slideUp', show: 'slideDown'});
-	  createCheckBoxes();
-	  createAppointments();
-
-	});
-       
-        // create checkboxes for time of operation
-        function createCheckBoxes() {
-	    
-	    var weekDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-	    var businessHours = document.getElementById('businessHours').value;
-	    if(businessHours) {
-	        businessHours = JSON.parse(JSON.parse(document.getElementById('businessHours').value).dow);
-	    }
-
-	    for(let day = 0; day < weekDays.length; day++) {
-	        var newTag = "<input type='checkbox' name='businessDays' value='" + (day + 1) + "'";
-		if(businessHours && businessHours.indexOf((day + 1).toString()) != -1) newTag += " checked";
-		newTag += ">" + weekDays[day];
-		$('#businessDays').append(newTag);
-	    }
-	        
-	}
-
-	
-	function createAppointments() {
-	
-	    var apptValue = document.getElementById('appts').value;
-	    if(apptValue) {
-		apptValue = JSON.parse(apptValue),first = true;
-		
-		for(let v in apptValue) {
-		    
-		    let val = Math.random();
-		    let newTag = "<div id='" + v + "'><input type='text' " +
-                    "placeholder='Appointment Name' name='appt" + val + "Name' " +
-                    "value='" + v + "'><input type='number' placeholder='Duration in hrs' name='appt" +
-		    val + "Dur' min='1' max ='24' " + "value='" + apptValue[v] + "'>";
-		    
-		    // add a remove button to every row except the first
-		    if(!first) {
-		        newTag += "<button type='button' id='" + v + "Rem'" + 
-			"onclick='removeOption(this.id)'>Remove</button></div>";
-		    } else { newTag += "</div>"; }
-
-		    $('#appointmentTypes').append(newTag);
-		    first = false;
-		}
-
-	    } else {
-		let val = Math.random();
-	        $('#appointmentTypes').append("<div id='" + val + "'><input type='text'" + 
-			" placeholder='AppointmentName' name='appt" + val + "Name'><input type='number'"
-			+ " placeholder='Duration in hours' name='appt" + val + "Dur' min='1' max='24'></div>");
-	    }
-	    
-	
-	}
-	
- 
-	// append another row to appointments or days of operation
-	function appendOptions(obj) {
-	    var newid = 'appt' + Math.random();
-	    var appendTo = document.getElementById('appointmentTypes');
-	    var newRow = "<div id='" + newid +  "'><input type='text' " +
-		    "placeholder='Appointment Name' name='" + newid +  "Name'>" + 
-		    "<input type='number' placeholder='Duration in hours' " + 
-		    "name='" + newid + "Dur' min='1' max='24'>" +
-		    "<button type='button' id='" + newid + "Rem' onclick='removeOption(this.id)'>" +
-		    "Remove</button></div>";
-
-           $('#appointmentTypes').append(newRow);
-	}
-
-	function removeOption(id) {
-	   var removeId = id.substring(0,id.length - 3); 
-	   document.getElementById(removeId).remove(removeId);
-	}
-
-
+    <form method="POST">
+        <textarea id="fill-me-in"></textarea>
+    </form>
+    {{>scripts}}
+    <script src="/plugins/formBuilder/form-builder.js"></script>
+    <script src="/plugins/jQueryUI/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/plugins/formBuilder/form-builder.css">
+    <script>
+        $("#fill-me-in").formBuilder();
     </script>
-
 </section>
 
