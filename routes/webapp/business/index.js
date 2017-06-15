@@ -14,7 +14,7 @@ var addEmployees = require('./addemployees');
 var employeeRegister = require('./employeeregister');
 var businesssetting = require('./businesssetting');
 var formbuilder = require('./forms');
-var checkin = require('./checkin');
+var appointment = require('./appointment');
 
 /*
  * TODO: Explain where this export is pointing to.
@@ -40,14 +40,16 @@ module.exports = function (passport) {
     router.get('/register', register.get);
     router.get('/privacy', privacy.get);
     router.get('/forms', isLoggedInBusiness, formbuilder.get);
+    router.post('/forms', isLoggedInBusiness, formbuilder.post);
     router.post('/register', passport.authenticate('local-signup', {
         successRedirect : '/dashboard', // redirect to the secure profile section
         failureRedirect : '/register' // redirect back to the signup page if there is an error
     }));
 
     router.get('/dashboard', isLoggedIn, dashboard.get);
-
-    router.get('/checkin', checkin.get);
+    
+    router.get('/appointment',appointment.get);
+    router.post('/appointment',appointment.post);
 
     router.get('/addemployees', isLoggedInBusiness, addEmployees.get);
     router.post('/addemployees', isLoggedInBusiness, addEmployees.post);
