@@ -5,19 +5,30 @@ exports.get = function(req,res) {
 	var businessCollection = req.db.get('businesses');
 	var options = {};
 
-	if(companyName && preferedDate) {
+	if(companyName) {
 
-	    var appointmentCollection = req.db.get('appointments');
-            getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
-	       console.log(hours);
-	       res.render('business/appointment',{layout: false, 
-			                          title:'Appointment Times',
-						  hrs: JSON.stringify(hours)});
-	    });
+	    var appointmentCollection = req.db.get('appointments'), formsCollection = req.db.get('forms');
+
+	    if(!req.query.date) {
+                getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
+		   console.log(hours);
+	           res.writeHead(200,{'Content-Type': 'application/json'});
+	           res.end(JSON.stringify({hrs: hours, business: companyName}));
+	        });
+	    } else {
+              
+	      // fetch the form to display
+	      businessCollection.findOne({'companyName': companyName}, {'_id': 1}).then((company) => {
+		  formsCollection.findOne({'businessId': company['_id']}).then((form) => {
+		      res.writeHead(200,{'Content-Type': 'application/json'});
+	              res.end(JSON.stringify({formContent: form['formParams'], business: companyName}));
+		  });
+	      });
+
+	   }
 	    
 	} else {
 	    
-	    console.log('sdfds');
 	    var formsCollection = req.db.get('forms'), companyNames = [];
 	    formsCollection.find({}, ['businessId','formParams']).then((forms) => {
 	    
@@ -81,26 +92,31 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 	       // generate all possible business hours
                for(;srtHr[0] < endHr[0]; srtHr[0] += 1) {  ttlHours.push(srtHr[0]); }
 
-	       var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-                
 	       // for each day within the week, find open hours
 	       for(;currDate.getDate() < weekLater.getDate(); currDate.setDate(currDate.getDate() + 1)) {
-		  if(operInfo.businessHours[0].dow.indexOf(currDate.getDay()) == -1) continue;
-	          availableHrs[days[currDate.getDay()]] = Array.from(ttlHours);
-	          
-		  for(let i = 0; i < docs.length; i++) {
 
+	       	  // if you're not working on this day go to next day
+		  if(operInfo.businessHours[0].dow.indexOf(currDate.getDay()) == -1) continue;
+		  var index = currDate.toString().substring(0,15);
+	          availableHrs[index] = Array.from(ttlHours);
+	          
+		  // for each appointment
+		  for(let i = 0; i < docs.length; i++) {
+		      
+		      // if the current date != appt date, then all hours are available
 		      if(currDate.getDate() != docs[i].startTime.getDate()) continue;
 
 		      var stDate = docs[i].startTime.getDate();
 		      var indexOf = ttlHours.indexOf(docs[i].startTime.getUTCHours());
+		      
+		      // remove hours depending on the duration of appointment
 		      for(let hr = 0; hr < docs[i].duration; hr++) {
-			  availableHrs[days[currDate.getDay()]][indexOf++] = -1;
+			  availableHrs[index][indexOf++] = -1;
 		      }
 	          }
 
 		  var apptDur = parseInt(operInfo['appointments'].selectedAppt) - 1,
-		  currDay = Array.from(availableHrs[days[currDate.getDay()]]), checkSlots = true;
+		  currDay = Array.from(availableHrs[index]), checkSlots = true;
 
 		  // use sliding window to eliminate times that don't work for appointment's duration
 		  /*for(let i = 0; i < currDay.length - apptDur;) {

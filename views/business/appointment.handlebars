@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> 
     <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
     <script src="http://formbuilder.online/assets/js/form-render.min.js"></script>
+    <script src="/javascripts/appointment.js"></script>
+
 <style>
 #leftForm {
 	width: 35%;
@@ -30,72 +33,114 @@ top: 65%;
 left: 30%;
 }
 
+
+#apptInfo {
+    margin: 5px;
+    padding: 10px;
+}
+
+#apptInfo ul {
+    list-style-type: none;
+    margin: 30px;
+    height: 50px;
+    padding: 0;
+    border-bottom: 2px solid black;
+}
+
+#apptInfo ul li {
+    float: left;
+    margin: 2px;
+}
+
+#apptInfo ul li button {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: blue;
+    height: 25px;
+    width: 100px;
+    text-align: center;
+border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+}
+
+#overlay {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+#form {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 30px;
+    border: 1px solid #888;
+    overflow: scroll;
+    width: 50%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#resAppt {
+    position: relative;
+    left: 48%;
+    bottom: 20%;
+}
+
 </style>
 </head>
 <body>
-	<!-- select company to make an appointment with -->
-	<form action='appointment' method='get' id='companyForm'>
-	    <label for='availBusinesses'>Select a Business</label>
-            <select id='availBusinesses' name='business'>
-                {{#each companies}}
-		<option value='{{this}}'>{{this}}</option>
-		{{/each}}
-	    </select>
-	    <input type='text' placeholder='Preferred date' name='preferedDate' id='preferedDate' readOnly>
-	    <div id='preferedDate' style='display:none'></div><br>
-	    <input type='submit' value='select'>
-	</form>
 
-	<div id='availHrs'>{{hrs}}</div>
-	<div id='dfs'>{{title}}</div>
-	
-	<!-- render calendar and company forms if response contains the necessary data -->
-	{{#if formData}}
-	    
-	    <div id='leftForm'>
-	        <form action='appointment' method='post' id='appointment'></form>
-	        <input type='hidden' value={{businessName}} name='businessId' form='appointment'>
-	        <select id='appointmentList' name='appointmentType'></select>
-    	        <input type='submit' value='Make appointment' id='submit-action' form='appointment'>
+	<!-- div that contains the selected businesses form -->
+        <div id='overlay'>
+	    <div id='form'>
+	        <span class="close">&times;</span>
+	        <form id='busForm' method='post' action='appointment'></form>
+	        <input type='submit' id='resAppt' value='Reserve'>
 	    </div>
+	</div>        
 
-	    <!-- contains json string that represents the persisted form for the selected company -->
-            <p id='formFields' hidden>{{formData}}</p>
-	    <p id='calendarOptions' hidden>{{calendarOptions}}</p>
-	    <p id='appointmentTypes' hidden>{{appointmentTypes}}</p>
-
-        {{/if}}
-
-
-
-
+	<!-- select company to make an appointment with -->
+	<label for='availBusinesses'>Select a Business</label>
+        <select id='availBusinesses' name='business'>
+            {{#each companies}}
+                <option value='{{this}}'>{{this}}</option>
+	    {{/each}}
+	</select>
+	
+	<input type='text' placeholder='Preferred date' name='preferedDate' id='preferedDate' readOnly>
+	<div id='preferedDate' style='display:none'></div><br>
+	<input type='submit' value='Submit' onclick='getAppts()'>
+	
+	<!-- divs that is populated with available appts -->
+	<div id='apptInfo'><p id='business' hidden></p></div>
+	
 	<script type='text/javascript'>
-	   
 	    $( "#preferedDate" ).datepicker({maxDate: '+2m'});
-
-            /*var appointmentTypes = JSON.parse(document.getElementById('appointmentTypes').innerHTML);
-	    for(let type in appointmentTypes) {
-		var option = "<option value='" + type + "" + appointmentTypes[type] + 
-			     "'>" + type + " " + appointmentTypes[type] + "hr(s)</option>";
-	        $('#appointmentList').append(option);
-	    }*/
-
-	    console.log(document.getElementById('availHrs').innerHTML);
-            var formOpts = {
-		formData: document.getElementById('formFields').innerHTML,
-		dataType: 'json'
-	    }
-
-	    console.log();
-
-	    // renders the company's form with the specified options
-	    $(document.getElementById('appointment')).formRender(formOpts);
-
-            	    
 	</script>
- 
-
-
 
 </body>
 </html>
