@@ -37,6 +37,7 @@ left: 30%;
 #apptInfo {
     margin: 5px;
     padding: 10px;
+    color:white;
 }
 
 #apptInfo ul {
@@ -44,7 +45,8 @@ left: 30%;
     margin: 30px;
     height: 50px;
     padding: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
+    color: white;
 }
 
 #apptInfo ul li {
@@ -57,7 +59,7 @@ left: 30%;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
-    background-color: blue;
+    background-color: #071C33;
     height: 25px;
     width: 100px;
     text-align: center;
@@ -116,36 +118,54 @@ border-radius: 3px;
     color: white;
 }
 
+h1 {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    color: white;
+
+}
+
+.btn-danger {
+    background-color: #071C33;
+    color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    border-radius: 4px; /* Overrides bootstrap rounded corners*/
+    border-color: #071C33;
+}
+
 </style>
 </head>
-<body>
+<body style="background-image: url('https://www.resolutets.com/wp-content/uploads/2013/06/Dark-Office-Background.png');">
+
+                    <div class="col-lg-12 text-center">
+                        <h1 style="text-align:center">Schedule an Appointment</h1>
+                        <hr id="custom_hr">
+                    </div>
 
 	<!-- div that contains the selected businesses form -->
         <div id='overlay'>
 	    <div id='form'>
 	        <div class="header">
     		    <span class="close">&times;</span>
-    		   <h2></h2>
+    		   <h2 style="color:white"></h2>
                 </div>
 		<div class='body'>
 	            <form id='busForm' method='post' action='appointment'></form>
 		</div>
-	        <input type='submit' id='resAppt' value='Reserve'>
+	        <input type='submit' id='resAppt' value='Schedule Appointment'>
 	    </div>
 	</div>        
 
 	<!-- select company to make an appointment with -->
-	<label for='availBusinesses'>Select a Business</label>
-        <select id='availBusinesses' name='business'>
+	<label style="font-size:32px; position:relative; right:-450px; color:white" for='availBusinesses'>Select a Business:</label>
+        <select style="font-size:32px; position:relative; right:-470px" id='availBusinesses' name='business'>
             {{#each companies}}
                 <option value='{{this}}'>{{this}}</option>
 	    {{/each}}
 	</select>
 	
-	<input type='text' placeholder='Preferred date' name='preferedDate' id='preferedDate' readOnly>
+	<input style="font-size:32px; position:relative; right:-500px" type='text' placeholder='Preferred date' name='preferedDate' id='preferedDate' readOnly>
 	<div id='preferedDate' style='display:none'></div><br>
-	<input type='submit' value='Submit' onclick='getAppts()'>
-	
+	<input style="position:relative; top: 30px; right:-600px"class="btn btn-lg btn-block btn-danger buyBtn" type='submit' value='Find Available Appointments' onclick='getAppts()'>
 	<!-- divs that is populated with available appts -->
 	<div id='apptInfo'><p id='business' hidden></p></div>
 	
