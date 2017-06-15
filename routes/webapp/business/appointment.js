@@ -5,7 +5,6 @@ exports.get = function(req,res) {
 	var businessCollection = req.db.get('businesses');
 	var options = {};
 
-<<<<<<< HEAD
 	if(companyName) {
 
 	    var appointmentCollection = req.db.get('appointments'), formsCollection = req.db.get('forms');
@@ -29,17 +28,6 @@ exports.get = function(req,res) {
 	      });
 
 	   }
-=======
-	if(companyName && preferedDate) {
-
-	    var appointmentCollection = req.db.get('appointments');
-            getAvailableDates(req.db,preferedDate,companyName).then((hours) => {
-	       res.render('business/appointment',{layout: false, 
-			                          title:'Appointment Times',
-						  hrs: hours});
-	       console.log("dsfsd");
-	    });
->>>>>>> testing
 	    
 	} else {
 	    
@@ -97,11 +85,7 @@ function getAvailableDates(db,preferedDate,companyName,res) {
                
 	       // for each hour within the selected week, return every hour that is not taken
 	       var currDate = new Date(preferedDate), weekLater = new Date(preferedDate),
-<<<<<<< HEAD
 	       availableHrs = {},ttlHours = [];
-=======
-	       availableHrs = [],ttlHours = [];
->>>>>>> testing
 	       weekLater.setDate(weekLater.getDate() + 7);
 
 	       var endHr = operInfo.maxTime.split(':'), srtHr = operInfo.minTime.split(':');
@@ -148,7 +132,6 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 			  }	  
 			  continue;
 		      }
-
 		      checkSlots = false;
 		      for(let j = i; j < apptDur + i; j++) {
 		          if(currDay[j] == -1) {
@@ -158,7 +141,6 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 			      break;
 			  }
 		      }
-
 		      if(!checkSlots) i++;
 	          }*/
 
