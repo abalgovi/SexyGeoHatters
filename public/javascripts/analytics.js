@@ -83,6 +83,17 @@ function tryClick(e) {
       });
   }
 
+  function checkinview()
+  {
+      debug("Checkin Page Viewed");
+      mixpanel.track('Checkin Page Views', 
+      {
+          'page name' : document.title,
+          'url' : window.location.pathname
+      });
+  }
+
+
 //Peter's Dashboard
 
 
