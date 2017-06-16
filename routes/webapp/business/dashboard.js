@@ -27,6 +27,7 @@ exports.get = function (req, res) {
 				}
 			}
 
+			console.log(req.user[0].business);
 			res.render('business/dashboard-business', {
 				title: 'Express',
 				eid: employeeId,

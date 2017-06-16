@@ -27,6 +27,7 @@
     $(document).ready(function() {
         // Parsed events to JSON
         var events = eval("(" + document.getElementById('events').innerHTML + ")");
+	console.log(events);
         var parsed_events = [];
         for(var i = 0; i < events.length; i++) {
             var json = JSON.stringify(events[i])

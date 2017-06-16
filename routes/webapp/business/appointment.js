@@ -1,3 +1,4 @@
+const monk = require('monk');
 
 exports.get = function(req,res) {
 
@@ -173,6 +174,7 @@ exports.post = function(req,res) {
 	// for now just set it to a default value will allow users to select appt type later
 	apptInfo['title'] = 'Consultation';
 	apptInfo['duration'] = 1;
+	apptInfo['businessId'] = monk.id(apptInfo['businessId']);
 	
 	apptInfo['startTime'] = new Date(formContents['appointment-date-time']);
 	apptInfo['startTime'].setHours(apptInfo['startTime'].getHours() - 7);
