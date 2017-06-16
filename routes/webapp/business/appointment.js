@@ -136,7 +136,6 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 			  }	  
 			  continue;
 		      }
-
 		      checkSlots = false;
 		      for(let j = i; j < apptDur + i; j++) {
 		          if(currDay[j] == -1) {
@@ -146,7 +145,6 @@ function getAvailableDates(db,preferedDate,companyName,res) {
 			      break;
 			  }
 		      }
-
 		      if(!checkSlots) i++;
 	          }*/
 

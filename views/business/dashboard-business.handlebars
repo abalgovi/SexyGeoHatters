@@ -1,5 +1,5 @@
 <section class="content-header">
-    <h1>Dr. Pepper's Dashboard </h1>
+    <h1>Business Dashboard </h1>
     <div id="txt" class="pull-right"></div>
     <h1 class="pull-right" id="currentDate"></h1>
 </section>
@@ -16,9 +16,6 @@
     {{/if}}
 
     <div class="pull-left" style = "width: 50%; margin: 0 auto;"></div>
-    <div>
-      <td><input type="button" value="Schedule New Appointment"></td>
-    </div>
     <div id='events' hidden> {{events}} </div> 
     <h3>Today's Appointments</h3>
     <div id='calendar'></div>
@@ -28,7 +25,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-
         // Parsed events to JSON
         var events = eval("(" + document.getElementById('events').innerHTML + ")");
         var parsed_events = [];
@@ -36,18 +32,16 @@
             var json = JSON.stringify(events[i])
             parsed_events.push(JSON.parse(json));
         }
-
         // Initalize Calendar
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
-
         $('#calendar').fullCalendar({
             default: true,
             header: {
                 left: 'today prev, next',
-                center: '',
+                center: 'title',
                 right: 'month, agendaWeek, agendaDay'
             },
             events: parsed_events,
