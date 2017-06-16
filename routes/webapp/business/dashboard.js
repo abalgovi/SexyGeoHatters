@@ -19,8 +19,8 @@ exports.get = function (req, res) {
 		});
 	} else if( isOwner ) {
 		var apptCollections = req.db.get("appointments");
-		apptCollections.find({businessId: req.user[0].business, startTime: {'$lte': new Date()}}).then((appts) => {
-			if (appts.length > 0) {
+		apptCollections.find({businessId: req.user[0].business, startTime: {'$gte': new Date()}}).then((appts) => {
+			if (appts.length >= 0) {
 				var events = [];
 				for(let appt in appts){
 					events.push({title: appts[appt].title, start: appts[appt].startTime, end: appts[appt].endTime});
